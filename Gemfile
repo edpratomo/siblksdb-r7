@@ -52,3 +52,10 @@ group :development do
   gem "web-console"
 end
 
+gem 'devise', github: 'heartcombo/devise'
+gem 'gravtastic'
+gem 'pundit'
+gem 'textacular', '~> 5.0'
+gem 'render_async'
+gem 'will_paginate-bootstrap-style'
+gem 'filterrific'
