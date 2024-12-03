@@ -45,6 +45,11 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git'
+  gem 'factory_bot_rails'  
 end
 
 group :development do
