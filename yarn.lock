@@ -466,6 +466,11 @@ bootstrap-switch@3.3.4:
   resolved "https://registry.yarnpkg.com/bootstrap-switch/-/bootstrap-switch-3.3.4.tgz#70e0aeb2a877c0dc766991de108e2170fc29a2ff"
   integrity sha512-7YQo+Ir6gCUqC36FFp1Zvec5dRF/+obq+1drMtdIMi9Xc84Kx63Evi0kdcp4HfiGsZpiz6IskyYDNlSKcxsL7w==
 
+bootstrap4-dialog@^4.4.4:
+  version "4.4.4"
+  resolved "https://registry.yarnpkg.com/bootstrap4-dialog/-/bootstrap4-dialog-4.4.4.tgz#7529f3c307c160d509ec18fa32025eb0aa5d8ad0"
+  integrity sha512-Shtj34EDtg6eBT1VEoPnECib3NNMzkGiNYHliGF5b7xTvDKAw+rh8MD2L+Ux5xV/QaLQ5hvR2zNc6Sexgio9Zg==
+
 bootstrap4-duallistbox@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/bootstrap4-duallistbox/-/bootstrap4-duallistbox-4.0.2.tgz#c6942e34a39d0d05e436d51ebaf31c9349f119d3"
