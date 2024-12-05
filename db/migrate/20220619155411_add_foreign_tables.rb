@@ -18,7 +18,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 CREATE SERVER myserver_#{db_suffix} FOREIGN DATA WRAPPER postgres_fdw OPTIONS (host '127.0.0.1', dbname 'siblksdb_#{db_suffix}');
 CREATE USER MAPPING FOR siblksdb SERVER myserver_#{db_suffix} OPTIONS (user 'siblksdb_ro', password '#{siblksdb_ro_password}');
-CREATE SCHEMA siblksdb;
+CREATE SCHEMA IF NOT EXISTS siblksdb;
 IMPORT FOREIGN SCHEMA public EXCEPT (ar_internal_metadata, schema_migrations) FROM SERVER myserver_#{db_suffix} INTO siblksdb;
 ALTER DATABASE siblksdb_v2_#{db_suffix} SET SEARCH_PATH TO public;
 SET SEARCH_PATH TO public;
