@@ -48,6 +48,7 @@ group :development, :test do
 
   gem 'dotenv-rails'
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 5.0'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git'
   gem 'factory_bot_rails'  
 end
