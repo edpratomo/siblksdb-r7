@@ -7,6 +7,6 @@ import "@fortawesome/fontawesome-free/js/all"
 import "./add_jquery"
 import "admin-lte"
 
-// import "admin-lte/dist/js/adminlte";
-
-// require('admin-lte');
+import toastr from "toastr"
+import "./toastr"
+window.toastr = toastr;
