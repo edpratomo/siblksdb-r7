@@ -3,7 +3,7 @@
   <head>
     <title><%= content_for(:title) || "Sistem Informasi BLK Don Bosco" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -28,7 +28,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index3.html" class="nav-link">Home</a>
+          <a href="#" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Contact</a>
@@ -143,6 +143,27 @@
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
+        </li>
+        <li class="nav-item dropdown user-menu">
+        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+          <%= image_tag("user1-128x128.jpg", class: "user-image img-circle elevation-2", alt: "User Image") %>
+          <span class="d-none d-md-inline"><%= current_user.fullname %></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <!-- User image -->
+          <li class="user-header bg-primary">
+            <%= image_tag("user1-128x128.jpg", class: "img-circle elevation-2", alt: "User Image") %>
+            <p>
+              <%= current_user.fullname %>
+              <div style="font-weight: bold;"><%= "Admin" %></div>
+            </p>
+          </li>
+          <!-- Menu Footer-->
+          <li class="user-footer">
+            <a href="#" class="btn btn-default btn-flat">Profile</a>
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-flat float-right" %>
+          </li>
+        </ul>
         </li>
         <li class="nav-item">
           <a class="nav-link" data-widget="fullscreen" href="#" role="button">

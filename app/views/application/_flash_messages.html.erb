@@ -1,0 +1,12 @@
+<% if flash.any? %>
+<% flash.each do |key, message| -%>
+  <script>
+  let toastrType = {
+        notice: "success", // Map Rails `:notice` to `toastr.success`
+        alert: "error",    // Map Rails `:alert` to `toastr.error`
+      }["<%= key %>"] || "info"; // Default to `info` for unmapped types
+      
+  toastr[toastrType]("<%= message.html_safe %>");
+  </script>
+<% end -%>
+<% end %>
