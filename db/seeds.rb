@@ -6,5 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 fullname, username, email, password = ENV['DEVISE_FIRST_USER'].split(",").map(&:strip)
-user = User.new(fullname: fullname, username: username, email: email, password: password, password_confirmation: password)
+group = Group.find_by(name: "sysadmin")
+raise "Group not found" unless group
+user = User.new(fullname: fullname, username: username, group: group, email: email, password: password, password_confirmation: password)
 user.save(validate: false)
