@@ -8,5 +8,5 @@ import "./add_jquery"
 import "admin-lte"
 
 import toastr from "toastr"
-import "./toastr"
+// import "./toastr"
 window.toastr = toastr;
