@@ -7,4 +7,5 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic default: "identicon"
 
+  belongs_to :group
 end
