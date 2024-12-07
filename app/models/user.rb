@@ -8,4 +8,8 @@ class User < ApplicationRecord
   gravtastic default: "identicon"
 
   belongs_to :group
+
+  def admin?
+    group.name == "sysadmin" or group.name == "admin"
+  end
 end
