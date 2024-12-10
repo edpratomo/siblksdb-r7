@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   get "home/index"
   root "home#index"
   
+  resources :admission_fees, :controller => "fees", :type => "AdmissionFee"
+  resources :reg_course_fees, :controller => "fees", :type => "RegCourseFee"
+  resources :int_course_fees, :controller => "fees", :type => "IntCourseFee"
+  resources :ext_course_fees, :controller => "fees", :type => "ExtCourseFee"
+  resources :book_uniform_fees, :controller => "fees", :type => "BookUniformFee"
+
   devise_for :users, skip: [:registrations]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
