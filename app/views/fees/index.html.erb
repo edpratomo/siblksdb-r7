@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, humanize_class(@fee.type) %>
+
+<% if @fee.is_a? CourseFee %>
+<%= render 'form_course', fee: @fee, courses_options: @courses_options %>
+<%= render 'list_course', fees: @fees %>
+<% else %>
+<%= render 'form', fee: @fee %>
+<%= render 'list', fees: @fees %>
+<% end %>

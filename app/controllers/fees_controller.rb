@@ -3,6 +3,11 @@ class FeesController < ApplicationController
 
   # GET /fees or /fees.json
   def index
+    #@fee = Fee.new
+    @fee = params[:type].constantize.new
+    @fee.type = params[:type]
+    @courses_options = Course.options_for_select
+    
     @fees = Fee.where(:type => params[:type])
   end
 
@@ -12,7 +17,8 @@ class FeesController < ApplicationController
 
   # GET /fees/new
   def new
-    @fee = Fee.new
+    # @fee = Fee.new
+    @fee = params[:type].constantize.new
     @fee.type = params[:type]
   end
 

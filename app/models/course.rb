@@ -7,4 +7,10 @@ class Course < ApplicationRecord
   has_many :admissions, through: :courses_admissions
   has_many :course_fees
   belongs_to :program
+
+  def self.options_for_select
+    joins(:program).order(:program_id, :id).map {|e|
+      ["#{e.program.program} - #{e.name}", e.id]
+    }
+  end
 end

@@ -14,12 +14,24 @@ window.moment = moment;
 import toastr from "toastr"
 window.toastr = toastr;
 
-// import "tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4"
-
 require("tempusdominus-bootstrap-4");
+import "datatables.net-bs4"
+import "datatables.net-responsive-bs4";
 
 // console.log($.fn.datetimepicker);
 
 document.addEventListener("turbo:load", () => {
   $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+  $('#example2').DataTable({
+    "paging": true,
+    "lengthChange": false,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
+  });
+  
 });
+
