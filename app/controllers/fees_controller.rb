@@ -6,6 +6,7 @@ class FeesController < ApplicationController
     @fee = params[:type].constantize.new
     @fee.type = params[:type]
     @courses_options = Course.options_for_select
+    @programs_options = Program.options_for_select
     
     Rails.logger.debug("controller: #{controller_name}")
     Rails.logger.debug("request_path: #{request.path}")

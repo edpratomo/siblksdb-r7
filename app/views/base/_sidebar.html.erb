@@ -8,16 +8,6 @@
   
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <%= image_tag("user2-160x160.jpg", class: "img-circle elevation-2", alt: "User Image") %>
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div>
-  
         <!-- SidebarSearch Form -->
         <div class="form-inline">
           <div class="input-group" data-widget="sidebar-search">
@@ -73,7 +63,7 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-copy"></i>
                 <p>
@@ -137,36 +127,43 @@
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
                 <p>
-                  Charts
+                  Pengaturan Biaya
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to admission_fees_path, {class: "nav-link"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>ChartJS</p>
-                  </a>
+                    <p>Biaya Admisi</p>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to book_uniform_fees_path, {class: "nav-link"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Flot</p>
-                  </a>
+                    <p>Biaya Buku &amp; Seragam</p>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to reg_course_fees_path, {class: "nav-link"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Inline</p>
+                    <p>Kursus Reguler</p>
                   </a>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to int_course_fees_path, {class: "nav-link"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>uPlot</p>
-                  </a>
+                    <p>Kursus Intensif</p>
+                  <% end %>
                 </li>
-              </ul>
+                <li class="nav-item">
+                  <%= link_to ext_course_fees_path, {class: "nav-link"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kursus Tambahan</p>
+                  <% end %>
+                </li>
+                </ul>
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">

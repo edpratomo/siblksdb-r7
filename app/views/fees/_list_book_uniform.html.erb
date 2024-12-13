@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-body">
+
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Program</th>
+        <th>Harga</th>
+        <th>Berlaku Mulai</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% fees.each do |fee| %>
+        <tr>
+          <td><%= fee.program.program %></td>
+          <td><%= fee.amount %></td>
+          <td><%= fee.active_since %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+<!-- ./card-body -->
+</div>
+<!-- ./card -->
