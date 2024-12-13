@@ -1,6 +1,9 @@
 <%= form_with(model: fee) do |form| %>
   <!-- Default box -->
-  <div class="card">
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title"><%= humanize_class(fee.type) %></h3>
+    </div>
     <div class="card-body">
       <% if fee.errors.any? %>
         <div style="color: red">
@@ -16,7 +19,7 @@
   
       <%= form.hidden_field :type, value: fee.type %>
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm">
           <!-- text input -->
           <div class="form-group">
             <%= form.label :amount, "Harga" %>
@@ -31,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm">
           <!-- Date and time -->
           <div class="form-group">
             <%= form.label :active_since, "Berlaku mulai:" %>
@@ -49,7 +52,6 @@
     <!-- /.card-body -->
     <div class="card-footer">
       <button type="submit" class="btn btn-info">Submit</button>
-      <button type="submit" class="btn btn-default float-right">Cancel</button>
     </div>
     <!-- /.card-footer-->
   </div>

@@ -5,6 +5,9 @@
 <% if @fee.is_a? CourseFee %>
 <%= render 'form_course', fee: @fee, courses_options: @courses_options %>
 <%= render 'list_course', fees: @fees %>
+<% elsif @fee.is_a? BookUniformFee %>
+<%= render 'form_book_uniform', fee: @fee, programs_options: @programs_options %>
+<%= render 'list_book_uniform', fees: @fees %>
 <% else %>
 <%= render 'form', fee: @fee %>
 <%= render 'list', fees: @fees %>
