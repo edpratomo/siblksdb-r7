@@ -13,4 +13,10 @@ class Course < ApplicationRecord
       ["#{e.program.program} - #{e.name}", e.id]
     }
   end
+
+  def self.options_for_checkbox
+    joins(:program).order(:program_id, :id).map {|e|
+      [e.id, "#{e.program.program} - #{e.name}"]
+    }
+  end
 end
