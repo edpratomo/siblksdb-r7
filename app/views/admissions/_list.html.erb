@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="card-body">
+
+    <table id="admissions_table" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Tempat, Tanggal Lahir</th>
+        <th>Kursus</th>
+        <th>Tanggal Pendaftaran</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% admissions.each do |admission| %>
+        <tr>
+          <td><%= admission.name %></td>
+          <td><%= birthplace %>, <%= birthdate %></td>
+          <td><%= admission.courses.join(", ") %></td>
+          <td><%= admission.created_at %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+<!-- ./card-body -->
+</div>
+<!-- ./card -->

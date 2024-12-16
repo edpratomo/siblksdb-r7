@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :fees
+  resources :admissions
+  resources :invoices
+  
   get "home/index"
   root "home#index"
   

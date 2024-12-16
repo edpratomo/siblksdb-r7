@@ -1,0 +1,6 @@
+<% content_for :page_title do %>Input Data Pendaftar<% end %>
+<% content_for :breadcrumb_items do %>
+<li class="breadcrumb-item active">Input Data Pendaftar</li>
+<% end %>
+
+<%= render 'form', admission: @admission, courses_options: @courses_options %>
