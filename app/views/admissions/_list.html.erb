@@ -8,17 +8,18 @@
         <th>Tempat, Tanggal Lahir</th>
         <th>Kursus</th>
         <th>Tanggal Pendaftaran</th>
-        <th></th>
+        <th colspan="2"></th>
       </tr>
       </thead>
       <tbody>
       <% admissions.each do |admission| %>
         <tr>
           <td><%= admission.name %></td>
-          <td><%= birthplace %>, <%= birthdate %></td>
-          <td><%= admission.courses.join(", ") %></td>
+          <td><%= admission.birthplace %>, <%= admission.birthdate %></td>
+          <td><%= admission.courses.map {|e| "#{e.program.program} - #{e.name}" }.join(", ") %></td>
           <td><%= admission.created_at %></td>
-          <td></td>
+          <td><%= link_to 'Edit', edit_admission_path(admission) %></td>
+          <td><%= link_to 'Destroy', admission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
       </tbody>
