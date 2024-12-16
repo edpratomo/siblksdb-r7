@@ -4,7 +4,14 @@ class AdmissionsController < ApplicationController
 
   # GET /admissions or /admissions.json
   def index
-    @admissions = Admission.all
+    # @admissions = Admission.all
+
+    @filterrific = initialize_filterrific(
+      Admission,
+      params[:filterrific]
+    ) or return
+    @admissions = @filterrific.find.page(params[:page])
+
   end
 
   # GET /admissions/1 or /admissions/1.json

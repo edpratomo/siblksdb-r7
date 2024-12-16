@@ -23,6 +23,8 @@ import "datatables.net-responsive-bs4";
 document.addEventListener("turbo:load", () => {
   $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
+  $('#datetimepicker1').datetimepicker({ icons: { time: 'far fa-clock' } });
+
   $('#example2').DataTable({
     "paging": true,
     "lengthChange": false,
