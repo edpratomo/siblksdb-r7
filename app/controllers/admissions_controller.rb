@@ -2,7 +2,8 @@ class AdmissionsController < ApplicationController
   before_action :set_admission, only: %i[ show edit update destroy ]
   before_action :set_courses_options, only: %i[ new edit create update ]
 
-  protect_from_forgery except: :index
+  #protect_from_forgery except: :index
+  skip_after_action :verify_same_origin_request
 
   # GET /admissions or /admissions.json
   def index
