@@ -28,6 +28,14 @@ class Admission < ApplicationRecord
     where("created_at AT TIME ZONE 'Asia/Jakarta' < ?", ref_date.sub(Regexp.new('^(\d+)/(\d+)/(\d+)$'), '\2/\1/\3'))
   }
 
+  def self.options_for_sorted_by
+    [
+      ["Name (a-z)", "name_asc"],
+      ["Registration date (newest first)", "created_at_desc"],
+      ["Registration date (oldest first)", "created_at_asc"],
+    ]
+  end
+
   def self.options_for_courses
     Course.joins(:program).order(:program_id, :id).map {|e|
       [e.id, "#{e.program.program} - #{e.name}"]

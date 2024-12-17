@@ -37,3 +37,5 @@ document.addEventListener("turbo:load", () => {
   
 });
 
+// import "./filterrific/filterrific"
+// require("./filterrific/filterrific");

@@ -2,16 +2,29 @@ class AdmissionsController < ApplicationController
   before_action :set_admission, only: %i[ show edit update destroy ]
   before_action :set_courses_options, only: %i[ new edit create update ]
 
+  protect_from_forgery except: :index
+
   # GET /admissions or /admissions.json
   def index
     # @admissions = Admission.all
 
     @filterrific = initialize_filterrific(
       Admission,
-      params[:filterrific]
+      params[:filterrific],
+      select_options: {
+        sorted_by: Admission.options_for_sorted_by,
+      },
     ) or return
-    @admissions = @filterrific.find.page(params[:page])
 
+    ff_result = Admission.filterrific_find(@filterrific)
+    Rails.logger.debug("ff_result: #{ff_result.inspect}")
+    @admissions = ff_result.paginate(page: params[:page])
+    #@admissions = @filterrific.find.page(params[:page]).e
+
+    respond_to do |format|
+      format.html
+      format.js { render partial: 'list', locals: { admissions: @admissions } }
+    end
   end
 
   # GET /admissions/1 or /admissions/1.json

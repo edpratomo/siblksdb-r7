@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Admissions</h1>
-
+<%= render 'filter' %>
 <%= render 'list', admissions: @admissions %>
 
 <br>
 
 <%= link_to 'New Admission', new_admission_path %>
+
