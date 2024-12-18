@@ -20,7 +20,7 @@ import "datatables.net-responsive-bs4";
 document.addEventListener("turbo:load", () => {
   $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
-  $('#datetimepicker1').datetimepicker({ icons: { time: 'far fa-clock' } });
+  $('#datetimepicker1').datetimepicker({format: 'L' });
 
   //Date picker
   $('#admission_after').datetimepicker({format: 'L'});
