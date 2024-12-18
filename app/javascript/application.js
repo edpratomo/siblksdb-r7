@@ -11,7 +11,6 @@ import moment from "moment/dist/moment"
 import "moment/dist/locale/id"
 window.moment = moment;
 
-
 require("tempusdominus-bootstrap-4");
 import "datatables.net-bs4"
 import "datatables.net-responsive-bs4";
@@ -22,6 +21,10 @@ document.addEventListener("turbo:load", () => {
   $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
   $('#datetimepicker1').datetimepicker({ icons: { time: 'far fa-clock' } });
+
+  //Date picker
+  $('#admission_after').datetimepicker({format: 'L'});
+  $('#admission_before').datetimepicker({format: 'L'});
 
   $('#example2').DataTable({
     "paging": true,
