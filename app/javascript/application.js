@@ -11,8 +11,6 @@ import moment from "moment/dist/moment"
 import "moment/dist/locale/id"
 window.moment = moment;
 
-import toastr from "toastr"
-window.toastr = toastr;
 
 require("tempusdominus-bootstrap-4");
 import "datatables.net-bs4"
@@ -37,5 +35,9 @@ document.addEventListener("turbo:load", () => {
   
 });
 
-// import "./filterrific/filterrific"
-// require("./filterrific/filterrific");
+import toastr from "toastr"
+
+document.addEventListener("turbo:load", () => {
+  window.toastr = toastr;
+});
+
