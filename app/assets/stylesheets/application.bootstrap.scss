@@ -7,3 +7,10 @@
 @import "tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.css";
 @import "bootstrap4-dialog/dist/css/bootstrap-dialog.css";
 @import "datatables.net-bs4/css/dataTables.bootstrap4.css";
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('SourceSans3-Regular.ttf'),
+         url('SourceSans3-Bold.ttf');
+    font-display: swap;
+}
