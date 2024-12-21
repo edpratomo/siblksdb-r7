@@ -4,6 +4,8 @@ class Admission < ApplicationRecord
 
   include Invoiceable
 
+  self.per_page = 10
+  
   # filter list
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },
