@@ -1,6 +1,6 @@
 <div class="card" id="filterrific_results">
   <div class="card-header">
-    <h3 class="card-title">Responsive Hover Table</h3>
+    <h3 class="card-title">Daftar Tagihan</h3>
     <div class="card-tools">
       <div class="input-group input-group-sm" style="width: 150px;">
         <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
@@ -30,19 +30,23 @@
         <td><%= link_to invoice.invoiceable.name, invoice.invoiceable %></td>
         <td><%= invoice.created_at %></td>
         <td><span class="tag tag-success"><%= invoice.paid ? "Lunas" : "Belum Lunas" %></span></td>
-        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
+        <td>
+          <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
           Rincian
-            </button>
+          </button>
         </td>
       </tr>
             
       <% end %>
       </tbody>
     </table>
+    
   </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+  <%= will_paginate invoices %>
 </div>
 
 <% @invoices.each do |invoice| %>
 <%= render 'modal', invoice: invoice %>
 <% end %>
-      
