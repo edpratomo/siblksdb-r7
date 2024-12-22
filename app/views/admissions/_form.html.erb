@@ -44,7 +44,7 @@
         <div class="col-sm-7 form-inline">
           <%= form.text_field :birthplace, class: "form-control" %>
           <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <%= form.text_field :birthdate, class: "form-control datetimepicker-input", "data-target": "#datetimepicker1", "data-date-format": "DD/MM/YYYY", placeholder: "dd/mm/yyyy", value: @admission.birthdate.strftime("%d/%m/%Y") %>
+            <%= form.text_field :birthdate, class: "form-control datetimepicker-input", "data-target": "#datetimepicker1", "data-date-format": "DD/MM/YYYY", placeholder: "dd/mm/yyyy", value: @admission.birthdate ? @admission.birthdate.strftime("%d/%m/%Y") : nil %>
             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
