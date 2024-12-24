@@ -6,7 +6,7 @@
       <%= render 'invoices/items', invoice: invoice %>
   </div>
 </div>
-<%= form_with(url: create_payments_path) do |form| %>
+<%= form_with(model: payment, url: create_payments_path) do |form| %>
   <%#= form.hidden_field :invoice_id, value: invoice.id %>
   <div class="card card-info">
     <div class="card-body">
