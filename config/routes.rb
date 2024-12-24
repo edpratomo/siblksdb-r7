@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :payments
+  resources :payments do
+    collection do
+      get ':invoice_id/new' => 'payments#new', as: "new"
+      post ':invoice_id' => 'payments#create', as: "create"
+    end
+  end
   resources :fees
   resources :admissions
   resources :invoices
-  
+
   get "home/index"
   root "home#index"
   

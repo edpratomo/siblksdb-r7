@@ -40,10 +40,15 @@
           <!-- ./form-group -->
         </div>
         <div class="col-sm-6">
-          <div class="form-group row">
-            <%= form.label :payment_method, "Metode Pembayaran", class: "col-form-label col-sm-6" %>
-            <div class="col-sm-6">
-              <%= form.select :payment_method, options_for_select(["Tunai", "Bank Transfer"]), {}, class: "form-control" %>
+          <!-- radio -->
+          <div class="form-group row ">
+            <div class="icheck-primary d-inline px-3">
+              <%= form.radio_button :method, "cash", checked: true %>
+              <%= form.label "method_cash", "Tunai" %>
+            </div>
+            <div class="icheck-primary d-inline px-3">
+              <%= form.radio_button :method, "bank_transfer" %>
+              <%= form.label "method_bank_transfer", "Transfer Bank" %>
             </div>
           </div>
           <!-- ./form-group -->
