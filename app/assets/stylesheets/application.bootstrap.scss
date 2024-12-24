@@ -14,3 +14,21 @@
          url('SourceSans3-Bold.ttf');
     font-display: swap;
 }
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src:          url('SourceSans3-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src:          url('SourceSans3-Bold.ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('SourceSans3-Regular.ttf');
+    font-weight: normal;
+}
