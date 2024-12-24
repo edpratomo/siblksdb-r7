@@ -1,0 +1,59 @@
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Invoice #<%= invoice.id %></h3>
+  </div>
+  <div class="card-body">
+      <%= render 'invoices/items', invoice: invoice %>
+  </div>
+</div>
+<%= form_with(url: create_payments_path) do |form| %>
+  <%#= form.hidden_field :invoice_id, value: invoice.id %>
+  <div class="card card-info">
+    <div class="card-body">
+      <% if payment.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+
+          <ul>
+            <% payment.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group row">
+            <%= form.label :amount, "Jumlah", class: "col-form-label col-sm-4" %>
+            <div class="col-sm-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Rp</span>
+                </div>
+                <%= form.number_field :amount, autofocus: true, required: true, value: remaining_balance, class: "form-control" %>
+                <div class="input-group-append">
+                  <span class="input-group-text">,00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ./form-group -->
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group row">
+            <%= form.label :payment_method, "Metode Pembayaran", class: "col-form-label col-sm-6" %>
+            <div class="col-sm-6">
+              <%= form.select :payment_method, options_for_select(["Tunai", "Bank Transfer"]), {}, class: "form-control" %>
+            </div>
+          </div>
+          <!-- ./form-group -->
+        </div>
+      </div>     
+    </div>
+    <!-- ./card-body -->
+    <div class="card-footer">
+      <%= form.submit %>
+    </div>
+  </div>
+  <!-- ./card -->
+<% end %>

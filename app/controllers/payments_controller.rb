@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: %i[ show edit update destroy ]
+  before_action :set_invoice, only: %i[ new create ]
 
   # GET /payments or /payments.json
   def index
@@ -13,6 +14,11 @@ class PaymentsController < ApplicationController
   # GET /payments/new
   def new
     @payment = Payment.new
+    @remaining_balance = if @invoice.paid
+      0
+    else
+      @invoice.amount - @invoice.total_paid
+    end
   end
 
   # GET /payments/1/edit
@@ -21,11 +27,15 @@ class PaymentsController < ApplicationController
 
   # POST /payments or /payments.json
   def create
-    @payment = Payment.new(payment_params)
+    @payment = @invoice.payments.build(payment_params)
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: "Payment was successfully created." }
+        flash[:notice] = ["Payment was successfully created."]
+        if @invoice.refund
+          flash[:notice] << "Refund created."
+        end
+        format.html { redirect_to @payment }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -63,8 +73,15 @@ class PaymentsController < ApplicationController
       @payment = Payment.find(params[:id])
     end
 
+    def set_invoice
+      @invoice = Invoice.find(params[:invoice_id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:alert] = 'Invoice not found.'
+      redirect_to invoices_path
+    end
+
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.fetch(:payment, {})
+      params.fetch(:payment, {}).permit(:amount)
     end
 end

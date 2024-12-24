@@ -4,7 +4,7 @@ class Invoice < ApplicationRecord
 
   has_many :payments
   has_many :invoice_items  
-  has_many :refunds
+  has_one :refund
 
   # filter list
   filterrific(
@@ -40,19 +40,8 @@ class Invoice < ApplicationRecord
     joins(:admission).where(admission: admission)
   }
 
-  def pay amount_paid, data_input_by
-    transaction do
-      payment = Payment.new(invoice: self, amount: amount_paid, modified_by: data_input_by)
-      self.payments << payment
-      total_paid = self.payments.inject(0) {|m,o| m += o.amount; m}
-      if total_paid >= self.amount
-        self.update_column(:paid, true)
-      end
-      if total_paid > self.amount
-        refund = Refund.new(invoice: self, amount: (total_paid - self.amount), modified_by: "system")
-        self.refunds << refund
-      end
-    end
+  def total_paid
+    payments.inject(0) {|m,o| m += o.amount; m}
   end
 
   def atomic_update_fees
