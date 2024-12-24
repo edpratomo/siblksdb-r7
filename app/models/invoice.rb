@@ -41,7 +41,7 @@ class Invoice < ApplicationRecord
   }
 
   def total_paid
-    payments.inject(0) {|m,o| m += o.amount; m}
+    payments.sum(:amount) #inject(0) {|m,o| m += o.amount; m}
   end
 
   def atomic_update_fees

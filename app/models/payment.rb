@@ -1,8 +1,8 @@
 class Payment < ApplicationRecord
   belongs_to :invoice
 
-  after_save :update_paid_status if :fully_paid?
-  after_save :create_refund if :overpaid?
+  after_save :update_paid_status, if: :fully_paid?
+  after_save :create_refund, if: :overpaid?
 
   def fully_paid?
     self.invoice.total_paid >= self.invoice.amount
