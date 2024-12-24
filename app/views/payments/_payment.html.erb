@@ -1,0 +1,7 @@
+<div id="<%= dom_id payment %>">
+<p>
+Pembayaran sejumlah <strong><%= number_to_currency payment.amount %></strong> untuk tagihan
+atas name <%= payment.invoice.invoiceable.name %> 
+ dibuat pada <%= payment.created_at %>
+</p>
+</div>
