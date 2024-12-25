@@ -20,7 +20,7 @@
         <th>Kepada</th>
         <th>Tanggal</th>
         <th>Status</th>
-        <th></th>
+        <th colspan="2"></th>
       </tr>
       </thead>
       <tbody>
@@ -33,6 +33,11 @@
         <td>
           <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
           Rincian
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn-sm btn-warning" data-toggle="modal" data-target="#modal-payment-<%= invoice.id %>">
+          Bayar
           </button>
         </td>
       </tr>
@@ -49,4 +54,5 @@
 
 <% @invoices.each do |invoice| %>
 <%= render 'modal', invoice: invoice %>
+<%= render 'payment_modal', invoice: invoice %>
 <% end %>
