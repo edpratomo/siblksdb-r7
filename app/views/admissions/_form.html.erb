@@ -62,9 +62,9 @@
                       <div class="form-group">
                         <% courses_options.each_with_index do |option, idx| %>
                           <% if idx <= (courses_options.size.to_f / 2).ceil %>
-                          <div class="custom-control custom-checkbox">
-                            <%= form.check_box(:course_ids, {multiple: true, class: "custom-control-input"}, option[0], nil) %>
-                            <label for="admission_course_ids_<%= option[0] %>" class="custom-control-label"><%= option[1] %></label>
+                          <div class="icheck-primary">
+                            <%= form.check_box(:course_ids, {multiple: true}, option[0], nil) %>
+                            <label for="admission_course_ids_<%= option[0] %>"><%= option[1] %></label>
                           </div>
                           <% end %>
                         <% end %>
@@ -80,9 +80,9 @@
                       <div class="form-group">
                         <% courses_options.each_with_index do |option, idx| %>
                           <% if idx > (courses_options.size.to_f / 2).ceil %>
-                          <div class="custom-control custom-checkbox">
-                            <%= form.check_box(:course_ids, {multiple: true, class: "custom-control-input"}, option[0], nil) %>
-                            <label for="admission_course_ids_<%= option[0] %>" class="custom-control-label"><%= option[1] %></label>
+                          <div class="icheck-primary">
+                            <%= form.check_box(:course_ids, {multiple: true}, option[0], nil) %>
+                            <label for="admission_course_ids_<%= option[0] %>"><%= option[1] %></label>
                           </div>
                           <% end %>
                         <% end %>
