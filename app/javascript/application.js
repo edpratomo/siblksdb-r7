@@ -2,6 +2,8 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import * as bootstrap from "bootstrap"
+window.bootstrap = bootstrap;
+
 import "@fortawesome/fontawesome-free/js/all"
 
 import "./add_jquery"
@@ -20,7 +22,7 @@ import "datatables.net-responsive-bs4";
 document.addEventListener("turbo:load", () => {
   $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });
 
-  $('#datetimepicker1').datetimepicker({format: 'L' });
+  $('#datetimepicker1').datetimepicker({format: 'L', ignoreReadonly: true });
 
   //Date picker
   $('#admission_after').datetimepicker({format: 'L'});
@@ -39,8 +41,11 @@ document.addEventListener("turbo:load", () => {
 });
 
 import toastr from "toastr"
+window.toastr = toastr;
+window.BootstrapDialog = require("bootstrap4-dialog/dist/js/bootstrap-dialog.min");
 
-document.addEventListener("turbo:load", () => {
-  window.toastr = toastr;
-});
-
+/*
+console.log(window.bootstrap);
+console.log(window.toastr);
+console.log(window.BootstrapDialog);
+*/

@@ -12,3 +12,6 @@ application.register("filter", FilterController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import PaymentModalController from "./payment_modal_controller"
+application.register("payment-modal", PaymentModalController)
