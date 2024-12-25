@@ -23,19 +23,17 @@
         </div>
       </div>
       <!-- ./form-group row -->
-      <div class="form-group row">
+      <div class="form-group row ">
         <div class="col-sm-3">
           <%= form.label :sex, "Jenis kelamin", class: "control-label sr-only" %>
         </div>
-        <div class="col-sm-7 form-inline">
-          <div class="form-check form-check-inline form-control">
-            <%= form.radio_button :sex, "female", class: "form-check-input" %>
-            <label>Perempuan</label>
-          </div>
-          <div class="form-check form-check-inline form-control">
-            <%= form.radio_button :sex, "male", class: "form-check-input" %>
-            <label>Laki-laki</label>
-          </div>
+        <div class="icheck-primary d-inline px-3">
+          <%= form.radio_button :sex, "female", checked: true %>
+          <%= form.label "sex_female", "Perempuan" %>
+        </div>
+        <div class="icheck-primary d-inline px-3">
+          <%= form.radio_button :sex, "male" %>
+          <%= form.label "sex_male", "Laki-laki" %>
         </div>
       </div>
       <!-- ./form-group row -->
