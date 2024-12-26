@@ -8,16 +8,23 @@ export default class extends Controller {
   }
 
   open({ params: { invoice}}) {
-    console.log("boostrapDialog: " + BootstrapDialog);
+    // console.log("boostrapDialog: " + BootstrapDialog);
     console.log("invoice_id: " + invoice);
 
     BootstrapDialog.show({
       size: BootstrapDialog.SIZE_WIDE,
+      title: 'Pembayaran Invoice ' + invoice,
       buttons: [
+        {
+          label: 'Close',
+          action: function(dialogItself){
+                    dialogItself.close();
+                  }
+        },
         {
           label: 'Tutup',
           cssClass: 'btn-warning',
-          icon: 'glyphicon glyphicon-ban-circle',
+          //icon: 'glyphicon glyphicon-ban-circle',
           action: function(dialogItself) {
                     dialogItself.setData("button", "Tutup")
                     dialogItself.close();
