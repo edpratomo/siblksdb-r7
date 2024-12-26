@@ -23,7 +23,7 @@
         <th colspan="2"></th>
       </tr>
       </thead>
-      <tbody>
+      <tbody data-controller="payment-modal">
       <% @invoices.each do |invoice| %>
       <tr class="invoice_row" >
         <td><%= link_to invoice.id, invoice %></td>
@@ -36,7 +36,7 @@
           </button>
         </td>
         <td>
-          <button type="button" class="btn-sm btn-warning" data-toggle="modal" data-target="#modal-payment-<%= invoice.id %>">
+          <button type="button" class="btn-sm btn-warning" data-action="click->payment-modal#open" data-payment-modal-invoice-param="<%= invoice.id %>">
           Bayar
           </button>
         </td>
