@@ -7,7 +7,18 @@
     alert: "error",    // Map Rails `:alert` to `toastr.error`
   }["<%= key %>"] || "info";
   console.log("toastrType: " + toastrType);
-  toastr[toastrType]("<%= message.html_safe %>");
+  if (typeof toastr !== 'undefined') {
+    <% if message.is_a? Array %>
+      <% message.each do |msg| %>
+        toastr[toastrType]("<%= msg.html_safe %>");
+      <% end %>
+    <% else %>
+      toastr[toastrType]("<%= message.html_safe %>");
+    <% end %>
+  } else {
+    console.log("toastr is not defined");
+  }
+  
 <% end -%>
 </script>
 <% end %>
