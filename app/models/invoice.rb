@@ -40,6 +40,14 @@ class Invoice < ApplicationRecord
     joins(:admission).where(admission: admission)
   }
 
+  def unpaid_amount
+    if self.paid
+      0
+    else
+      self.amount - self.total_paid
+    end
+  end
+
   def total_paid
     payments.sum(:amount) #inject(0) {|m,o| m += o.amount; m}
   end
