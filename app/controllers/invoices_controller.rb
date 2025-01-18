@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[ show edit update destroy ]
+  before_action :set_payment, only: %i[ index ]
 
   # GET /invoices or /invoices.json
   def index
@@ -22,6 +23,9 @@ class InvoicesController < ApplicationController
 
   # GET /invoices/1 or /invoices/1.json
   def show
+    if params[:inline]
+      render partial: 'status', locals: {invoice: @invoice}
+    end
   end
 
   # GET /invoices/new
@@ -75,6 +79,10 @@ class InvoicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_invoice
       @invoice = Invoice.find(params[:id])
+    end
+
+    def set_payment
+      @payment = Payment.new
     end
 
     # Only allow a list of trusted parameters through.

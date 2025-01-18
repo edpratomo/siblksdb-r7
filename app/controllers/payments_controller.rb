@@ -2,6 +2,8 @@ class PaymentsController < ApplicationController
   before_action :set_payment, only: %i[ show edit update destroy ]
   before_action :set_invoice, only: %i[ new create ]
 
+  #layout false, only: %i[ new ]
+
   # GET /payments or /payments.json
   def index
     @payments = Payment.all
@@ -35,7 +37,7 @@ class PaymentsController < ApplicationController
         if @invoice.refund
           flash[:notice] << "Refund created."
         end
-        format.html { redirect_to @payment }
+        format.html { render partial: 'invoices/status', locals: {invoice: @invoice} }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -82,6 +84,6 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.fetch(:payment, {}).permit(:amount)
+      params.fetch(:payment, {}).permit(:amount, :method)
     end
 end

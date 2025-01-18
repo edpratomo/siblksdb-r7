@@ -1,0 +1,12 @@
+<%= turbo_frame_tag(dom_id(invoice)) do %>
+  <% if invoice.paid %>
+    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
+      Lunas
+    </button>
+  <% else %>
+    Kurang <%= number_to_currency invoice.unpaid_amount %>
+    <%= link_to new_payments_path(invoice_id: invoice.id) do %>
+      <%= button_tag "Bayar", class: "btn-sm btn-warning", type: "button" %>
+    <% end %>
+  <% end %>
+<% end %>

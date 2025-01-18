@@ -1,9 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <% content_for :page_title do %>Tabel Invoice<% end %>
 <% content_for :breadcrumb_items do %>
 <li class="breadcrumb-item active">Tabel Invoice</li>
 <% end %>
 
 <%= render 'filter' %>
-<%= render 'list', invoices: @invoices %>
+<%= render 'list', invoices: @invoices, payment: @payment %>

@@ -1,13 +1,5 @@
-<div class="card card-info">
-  <div class="card-header">
-    <h3 class="card-title">Invoice #<%= invoice.id %></h3>
-  </div>
-  <div class="card-body">
-      <%= render 'invoices/items', invoice: invoice %>
-  </div>
-</div>
+<%= turbo_frame_tag(dom_id(invoice)) do %>
 <%= form_with(model: payment, url: create_payments_path) do |form| %>
-  <%#= form.hidden_field :invoice_id, value: invoice.id %>
   <div class="card card-info">
     <div class="card-body">
       <% if payment.errors.any? %>
@@ -24,8 +16,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group row">
-            <%= form.label :amount, "Jumlah", class: "col-form-label col-sm-4" %>
-            <div class="col-sm-8">
+            <!-- <div class="col-sm-8"> -->
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">Rp</span>
@@ -35,7 +26,7 @@
                   <span class="input-group-text">,00</span>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
           </div>
           <!-- ./form-group -->
         </div>
@@ -57,8 +48,10 @@
     </div>
     <!-- ./card-body -->
     <div class="card-footer">
-      <%= form.submit %>
+      <%= link_to "Cancel", invoice_path(invoice, inline: true), class: "btn btn-default" %>
+      <%= form.button "Bayar", class: "btn btn-primary", type: "submit" %>
     </div>
   </div>
   <!-- ./card -->
+<% end %>
 <% end %>

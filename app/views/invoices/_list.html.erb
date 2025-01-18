@@ -20,7 +20,6 @@
         <th>Kepada</th>
         <th>Tanggal</th>
         <th>Status</th>
-        <th colspan="2"></th>
       </tr>
       </thead>
       <tbody data-controller="payment-modal">
@@ -29,17 +28,10 @@
         <td><%= link_to invoice.id, invoice %></td>
         <td><%= link_to invoice.invoiceable.name, invoice.invoiceable %></td>
         <td><%= invoice.created_at %></td>
-        <td><span class="tag tag-success"><%= invoice.paid ? "Lunas" : "Belum Lunas" %></span></td>
         <td>
-          <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
-          Rincian
-          </button>
+          <%= render 'status', invoice: invoice %>
         </td>
-        <td>
-          <button type="button" class="btn-sm btn-warning" data-action="click->payment-modal#open" data-payment-modal-invoice-param="<%= invoice.id %>">
-          Bayar
-          </button>
-        </td>
+        
       </tr>
             
       <% end %>
@@ -54,5 +46,5 @@
 
 <% @invoices.each do |invoice| %>
 <%= render 'modal', invoice: invoice %>
-<%= render 'payment_modal', invoice: invoice %>
+<%#= render 'payment_modal', invoice: invoice, payment: payment %>
 <% end %>
