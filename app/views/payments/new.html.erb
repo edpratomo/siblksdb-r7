@@ -1,9 +1,1 @@
-<% content_for :title, "New payment" %>
-
-<%= render "form", payment: @payment, invoice: @invoice, remaining_balance: @remaining_balance %>
-
-<br>
-
-<div>
-  <%= link_to "Back to payments", payments_path %>
-</div>
+<%= render "form", payment: @payment, invoice: @invoice, remaining_balance: @invoice.unpaid_amount %>
