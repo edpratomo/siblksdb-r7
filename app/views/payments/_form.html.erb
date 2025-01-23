@@ -48,7 +48,7 @@
     <!-- ./card-body -->
     <div class="card-footer">
       <%= link_to "Cancel", invoice_path(invoice, inline: true), class: "btn btn-default" %>
-      <%= form.button "Bayar", class: "btn btn-primary", type: "submit" %>
+      <%= form.button "Bayar", class: "btn btn-primary", type: "submit", data: { "turbo-confirm": "Are you sure?" } %>
     </div>
   </div>
   <!-- ./card -->

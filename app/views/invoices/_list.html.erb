@@ -19,7 +19,8 @@
         <th>ID</th>
         <th>Kepada</th>
         <th>Tanggal</th>
-        <th>Status</th>
+        <th>Kurang Bayar</th>
+        <th></th>
       </tr>
       </thead>
       <tbody data-controller="payment-modal">
@@ -31,7 +32,11 @@
         <td>
           <%= render 'status', invoice: invoice %>
         </td>
-        
+        <td>
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= invoice.id %>">
+            Rincian
+            </button>
+        </td>
       </tr>
             
       <% end %>
