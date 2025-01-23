@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :fees
   resources :admissions
   resources :invoices
+  resources :students
 
   get "home/index"
   root "home#index"

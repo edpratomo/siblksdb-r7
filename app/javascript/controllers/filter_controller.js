@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["admissionFilter"];
+  static targets = ["filterParams"]
 
   connect() {
     console.log("Filter controller connected!");
@@ -9,10 +9,10 @@ export default class extends Controller {
 
   submit() {
     //const url = this.formTarget.action;
-    const url = new URL(this.admissionFilterTarget.action, window.location.origin);
+    const url = new URL(this.filterParamsTarget.action, window.location.origin);
     //const data = new FormData(this.formTarget);
 
-    const params = new URLSearchParams(new FormData(this.admissionFilterTarget));
+    const params = new URLSearchParams(new FormData(this.filterParamsTarget));
     url.search = params.toString();  // Add form data as query string
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;

@@ -2,6 +2,8 @@ class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[ show edit update destroy ]
   before_action :set_payment, only: %i[ index ]
 
+  skip_after_action :verify_same_origin_request
+  
   # GET /invoices or /invoices.json
   def index
     #@invoices = Invoice.all
@@ -17,7 +19,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.js
+      format.js { render partial: 'list', locals: { invoices: @invoices } }
     end
   end
 
