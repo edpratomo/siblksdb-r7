@@ -6,6 +6,9 @@ class Invoice < ApplicationRecord
   has_many :invoice_items  
   has_one :refund
 
+  validates :invoice_number, uniqueness: true
+  before_create :set_invoice_number
+
   # filter list
   filterrific(
     default_filter_params: { sorted_by: 'created_at_asc' },
@@ -75,5 +78,14 @@ class Invoice < ApplicationRecord
       ['Tanggal invoice (baru -> lama)', 'created_at_desc'],
       ['Tanggal invoice (lama -> baru)', 'created_at_asc'],
     ]
+  end
+
+  private
+  
+  def set_invoice_number
+    loop do
+      self.invoice_number = "INV-#{Time.current.strftime("%Y%m%d")}-#{SecureRandom.hex(3).upcase}"
+      break unless Invoice.exists?(invoice_number: invoice_number)
+    end
   end
 end
