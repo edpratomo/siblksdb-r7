@@ -27,7 +27,11 @@
       <% @invoices.each do |invoice| %>
       <tr class="invoice_row" >
         <td><%= link_to invoice.id, invoice %></td>
-        <td><%= link_to invoice.invoiceable.name, invoice.invoiceable %></td>
+        <td><%= link_to invoice.invoiceable.name, invoice.invoiceable %> 
+            <% if invoice.invoiceable.is_a?(Admission) %>
+            <span class="badge bg-success">admisi</span>
+            <% end %>
+        </td>
         <td><%= invoice.created_at %></td>
         <td>
           <%= render 'status', invoice: invoice %>
