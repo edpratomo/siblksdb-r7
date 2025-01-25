@@ -84,7 +84,9 @@ class Invoice < ApplicationRecord
   
   def set_invoice_number
     loop do
-      self.invoice_number = "INV-#{Time.current.strftime("%Y%m%d")}-#{SecureRandom.hex(3).upcase}"
+      self.invoice_number = "INV/#{Time.current.strftime("%Y%m%d")}/" + 
+                            self.invoiceable.class.to_s.slice(0,3).upcase + "/" +
+                            self.invoiceable.id.to_s + "/" + SecureRandom.hex(3).upcase
       break unless Invoice.exists?(invoice_number: invoice_number)
     end
   end
