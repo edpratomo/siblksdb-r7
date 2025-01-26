@@ -1,0 +1,23 @@
+<%= turbo_frame_tag(dom_id(refund)) do %>
+  <% if refund.paid_at %>
+    <div class="row">
+      <div class="col">
+      Dibayar <%= refund.paid_at %>
+      </div>
+      <div class="col-6">
+        <%= button_tag "Bayar", class: "btn btn-sm btn-warning disabled", type: "button" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col">
+      <%= number_to_currency refund.amount %>
+      </div>
+      <div class="col-6">
+      <%= link_to new_refunds_path(invoice_id: invoice.id) do %>
+        <%= button_tag "Bayar", class: "btn btn-sm btn-warning", type: "button" %>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

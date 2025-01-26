@@ -38,7 +38,6 @@
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Admisi
-                  <span class="right badge badge-danger">New</span>
                 </p>
               <% end %>
             </li>
@@ -47,6 +46,15 @@
                 <i class="nav-icon fas fa-file-invoice"></i>
                 <p>
                   Tagihan &amp; Pembayaran
+                </p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to refunds_path, class: "nav-link" do %>
+                <i class="nav-icon fa fa-undo"></i>
+                <p>
+                  Pengembalian Dana
+                  <span class="right badge badge-danger">2</span>
                 </p>
               <% end %>
             </li>

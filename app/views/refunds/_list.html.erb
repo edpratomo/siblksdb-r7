@@ -1,0 +1,54 @@
+<div class="card" id="filterrific_results">
+  <div class="card-header">
+    <h3 class="card-title">Pengembalian Dana</h3>
+    <div class="card-tools">
+      <div class="input-group input-group-sm" style="width: 150px;">
+        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+        <div class="input-group-append">
+          <button type="submit" class="btn btn-default">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Kepada</th>
+        <th>Tanggal</th>
+        <th>Lebih Bayar</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @refunds.each do |refund| %>
+      <tr>
+        <td><%= link_to refund.id, refund %></td>
+        <td><%= link_to refund.invoice.invoiceable.name, refund.invoice.invoiceable %></td>
+        <td><%= refund.created_at %></td>
+        <td>
+          <%= render 'status', refund: refund %>
+        </td>
+        <td>
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= refund.id %>">
+            Rincian
+            </button>
+        </td>
+      </tr>
+            
+      <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+  <%= will_paginate @refunds %>
+</div>
+
+<% @refunds.each do |refund| %>
+<%= render 'detail', refund: refund %>
+<% end %>

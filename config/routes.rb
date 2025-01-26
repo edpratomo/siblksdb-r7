@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :refunds do
+    collection do
+      get ':invoice_id/new' => 'refunds#new', as: "new"
+      post ':invoice_id' => 'refunds#create', as: "create"
+    end
+  end
+
   resources :payments do
     collection do
       get ':invoice_id/new' => 'payments#new', as: "new"
