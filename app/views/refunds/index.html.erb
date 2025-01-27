@@ -1,0 +1,9 @@
+<% content_for :page_title do %>Pengembalian Dana<% end %>
+<% content_for :breadcrumb_items do %>
+<li class="breadcrumb-item active">Pengembalian Dana</li>
+<% end %>
+
+<%= render 'filter' %>
+<%= render 'list', refunds: @refunds %>
+
+<%= link_to "New refund", new_refund_path %>

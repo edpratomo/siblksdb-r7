@@ -50,5 +50,5 @@
 </div>
 
 <% @refunds.each do |refund| %>
-<%= render 'detail', refund: refund %>
+<%= render 'detail', refund: refund, invoice: refund.invoice %>
 <% end %>

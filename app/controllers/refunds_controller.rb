@@ -53,7 +53,8 @@ class RefundsController < ApplicationController
   def update
     respond_to do |format|
       if @refund.update(refund_params)
-        format.html { redirect_to @refund, notice: "Refund was successfully updated." }
+        format.html { render partial: 'status', locals: {refund: @refund} }
+        #format.html { redirect_to @refund, notice: "Refund was successfully updated." }
         format.json { render :show, status: :ok, location: @refund }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -80,6 +81,6 @@ class RefundsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def refund_params
-      params.fetch(:refund, {})
+      params.fetch(:refund, {}).permit(:paid_at)
     end
 end
