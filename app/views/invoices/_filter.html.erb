@@ -1,4 +1,7 @@
-<div class="card card-primary">
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Tagihan &amp; Pembayaran</h3>
+  </div>
   <div class="card-body">
   <%= form_for_filterrific @filterrific, data: {"turbo-frame": "invoices-list", "controller": "filter", "action": "change->filter#submit", "filter-target": "filterParams"} do |f| %>
     <div class="row">
