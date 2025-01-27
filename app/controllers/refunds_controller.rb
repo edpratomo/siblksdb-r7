@@ -9,7 +9,8 @@ class RefundsController < ApplicationController
       Refund,
       params[:filterrific],
       :select_options => {
-        sorted_by: Refund.options_for_sorted_by
+        sorted_by: Refund.options_for_sorted_by,
+        already_paid: Refund.options_for_already_paid
       }
     ) or return
 

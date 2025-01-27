@@ -19,7 +19,8 @@ class Refund < ApplicationRecord
   }
 
   scope :already_paid, ->(true_or_false) {
-    if true_or_false
+    return if true_or_false == ''
+    if true_or_false == '1'
       where.not(paid_at: nil)
     else
       where(paid_at: nil)
@@ -39,6 +40,14 @@ class Refund < ApplicationRecord
       ['Kepada (a-z)', 'invoice.invoiceable.name_asc'],
       ['Tanggal (baru -> lama)', 'created_at_desc'],
       ['Tanggal (lama -> baru)', 'created_at_asc'],
+    ]
+  end
+
+  def self.options_for_already_paid
+    [
+      ['Pilih', ''],
+      ['Sudah dikembalikan', '1'],
+      ['Belum dikembalikan', '0']
     ]
   end
 end

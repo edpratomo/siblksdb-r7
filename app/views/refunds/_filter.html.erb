@@ -2,7 +2,7 @@
   <div class="card-body">
   <%= form_for_filterrific @filterrific, data: {"turbo-frame": "refunds-list", "controller": "filter", "action": "change->filter#submit", "filter-target": "filterParams"} do |f| %>
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="form-group">
           <label>Urutkan</label>
           <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
@@ -11,10 +11,13 @@
           %>
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-md-6">
         <div class="form-group">
-        <label>Text</label>
-          <input type="text" class="form-control" placeholder="Enter ...">
+          <label>Status Pengembalian</label>
+          <%= f.select :already_paid, @filterrific.select_options[:already_paid],
+                       { },
+                       { :class => 'form-control' }
+          %>
         </div>
       </div>
     </div>
