@@ -1,0 +1,6 @@
+<%= turbo_stream.replace(dom_id(@invoice)) do %>
+  <%= render 'invoices/status', invoice: @invoice %>
+<% end %>
+<%= turbo_stream.update("refunds-count") do %>
+  <%= outstanding_refunds_count %>
+<% end %>
