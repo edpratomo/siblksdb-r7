@@ -4,9 +4,14 @@ class InvoicesController < ApplicationController
 
   skip_after_action :verify_same_origin_request
   
+  def search
+    #@invoices = Invoice.fuzzy_search(name: params[:q])
+    @invoices = Invoice.includes(:admission).references(:admissions).fuzzy_search({admissions: {name: params[:q]}})
+    render :layout => 'plain'
+  end
+
   # GET /invoices or /invoices.json
   def index
-    #@invoices = Invoice.all
     @filterrific = initialize_filterrific(
       Invoice,
       params[:filterrific],

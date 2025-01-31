@@ -19,8 +19,7 @@ class Refund < ApplicationRecord
   }
 
   scope :already_paid, ->(true_or_false) {
-    return if true_or_false == ''
-    if true_or_false == '1'
+    if true_or_false == 1
       where.not(paid_at: nil)
     else
       where(paid_at: nil)
