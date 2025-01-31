@@ -1785,6 +1785,11 @@ stimulus-autocomplete@^3.1.0:
   resolved "https://registry.yarnpkg.com/stimulus-autocomplete/-/stimulus-autocomplete-3.1.0.tgz#7c9292706556ed0a87abf60ea2688bf0ea1176a8"
   integrity sha512-SmVViCdA8yCl99oV2kzllNOqYjx7wruY+1OjAVsDTkZMNFZG5j+SqDKHMYbu+dRFy/SWq/PParzwZHvLAgH+YA==
 
+stimulus-datepicker@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/stimulus-datepicker/-/stimulus-datepicker-1.0.9.tgz#57d3ee5c69ab060acd510fad0187b1236f6929fc"
+  integrity sha512-InihgKw4VXXy2cB3u7JzjR6cps4Y1CEyZviCn3hp2Ani1EKDoLy7z3lHTLRsM23bcdvQiJI18iBjR18zFIIETw==
+
 string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"

@@ -1,4 +1,4 @@
-<%= form_for_filterrific @filterrific, html: { class: "form-horizontal", role: "form" }, data: {controller: "filter", action: "change->filter#submit", "filter-target": "filterParams" } do |f| %>
+<%= form_for_filterrific @filterrific, html: { class: "form-horizontal", role: "form" }, data: { controller: "filter" } do |f| %>
 <div class="card card-info">
   <div class="card-header">
     <h3 class="card-title">Pendaftaran Calon Siswa</h3>
@@ -8,16 +8,18 @@
     <div class="form-group row">
       <%= f.label :sorted_by, "Urutkan", class: "control-label col-sm-3" %>
       <div class="col-sm-6">
-        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, {:class => "form-control"}) %>
+        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, 
+            {class: "form-control", data: { action: "change->filter#submit", "filter-target": "filterParams" }}) %>
       </div>
     </div>
 
     <div class="form-group row">
       <%= f.label :with_created_at_gt, "Terdaftar sebelum", class: "control-label col-sm-3" %>
       <div class="col-sm-6">
-        <div class="input-group date" id="admission_before" data-target-input="nearest">
-          <%= f.text_field :with_created_at_lt, { sclass: "form-control datetimepicker-input", "data-target": "#admission_before" } %>
-          <div class="input-group-append" data-target="#admission_before" data-toggle="datetimepicker">
+        <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
+          <%= f.text_field :with_created_at_lt, { name: "filterrific[with_created_at_lt]",
+              data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
+          <div class="input-group-append" data-datepicker-target="toggle">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>
@@ -27,9 +29,10 @@
     <div class="form-group row">
       <%= f.label :with_created_at_gt, "Terdaftar setelah", class: "control-label col-sm-3" %>
       <div class="col-sm-6">
-        <div class="input-group date" id="admission_after" data-target-input="nearest">
-          <%= f.text_field :with_created_at_gt, { sclass: "form-control datetimepicker-input", "data-target": "#admission_after" } %>
-          <div class="input-group-append" data-target="#admission_after" data-toggle="datetimepicker">
+        <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
+          <%= f.text_field :with_created_at_gt, { name: "filterrific[with_created_at_gt]", 
+              data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
+          <div class="input-group-append" data-datepicker-target="toggle">
             <div class="input-group-text"><i class="fa fa-calendar"></i></div>
           </div>
         </div>

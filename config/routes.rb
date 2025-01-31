@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
   resources :fees
   resources :admissions
-  resources :invoices
+  resources :invoices do
+    collection do
+      get 'search'
+    end
+  end
   resources :students
 
   get "home/index"

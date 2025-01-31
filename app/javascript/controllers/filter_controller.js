@@ -1,18 +1,27 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["filterParams"]
-
+  static targets = ["filterParams", "datePicker"]
+  //static targets = ["datePicker"]
   connect() {
     console.log("Filter controller connected!");
   }
-
+  
   submit() {
+    //const formElement = this.filterParamsTarget.form;
+    var formElement;
+
+    if (this.hasFilterParamsTarget) {
+      formElement = this.filterParamsTarget.form;
+    } else if (this.hasDatePickerTarget) {
+      formElement = this.datePickerTarget.form;
+    }
+
     //const url = this.formTarget.action;
-    const url = new URL(this.filterParamsTarget.action, window.location.origin);
+    const url = new URL(formElement.action, window.location.origin);
     //const data = new FormData(this.formTarget);
 
-    const params = new URLSearchParams(new FormData(this.filterParamsTarget));
+    const params = new URLSearchParams(new FormData(formElement));
     url.search = params.toString();  // Add form data as query string
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;

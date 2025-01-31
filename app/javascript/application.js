@@ -25,9 +25,21 @@ document.addEventListener("turbo:load", () => {
   $('#datetimepicker1').datetimepicker({format: 'L', ignoreReadonly: true });
 
   //Date picker
-  $('#admission_after').datetimepicker({format: 'L'});
-  $('#admission_before').datetimepicker({format: 'L'});
-
+  /*
+  $('#admission_after').datepicker({format: 'L',
+    onSelect: function(dateText, inst) {
+      console.log("datetimepicker AFTER selected");
+      $(this).parents("form").submit();
+    }
+  });
+  
+  $('#admission_before').datetimepicker({format: 'L',
+    onSelect: function(dateText, inst) {
+      console.log("datetimepicker BEFORE selected");
+      $(this).parents("form").submit();
+    }
+  });
+  */
   $('#example2').DataTable({
     "paging": true,
     "lengthChange": false,
