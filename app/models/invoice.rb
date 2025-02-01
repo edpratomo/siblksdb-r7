@@ -2,6 +2,9 @@ class Invoice < ApplicationRecord
   # invoice can be polymorphically applied to either admission or student
   belongs_to :invoiceable, polymorphic: true
 
+  belongs_to :admission, -> { where(invoices: { invoiceable_type: 'Admission' }) }, foreign_key: 'invoiceable_id'
+  belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
+
   has_many :payments
   has_many :invoice_items  
   has_one :refund
@@ -23,6 +26,9 @@ class Invoice < ApplicationRecord
 
   scope :sorted_by, ->(column_order) { 
     if Regexp.new('^(.+)_(asc|desc)$', Regexp::IGNORECASE).match(column_order)
+      if $1 == "name"
+      
+      end
       reorder("#{$1} #{$2}")
     end
   }
@@ -74,7 +80,7 @@ class Invoice < ApplicationRecord
 
   def self.options_for_sorted_by
     [
-      ['Kepada (a-z)', 'invoiceable.name_asc'],
+      # ['Kepada (a-z)', 'invoices.invoiceable.name_asc'],
       ['Tanggal invoice (baru -> lama)', 'created_at_desc'],
       ['Tanggal invoice (lama -> baru)', 'created_at_asc'],
     ]

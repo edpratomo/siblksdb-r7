@@ -36,7 +36,7 @@ class Refund < ApplicationRecord
 
   def self.options_for_sorted_by
     [
-      ['Kepada (a-z)', 'invoice.invoiceable.name_asc'],
+      #['Kepada (a-z)', 'invoice.invoiceable.name_asc'],
       ['Tanggal (baru -> lama)', 'created_at_desc'],
       ['Tanggal (lama -> baru)', 'created_at_asc'],
     ]
