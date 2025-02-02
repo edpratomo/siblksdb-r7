@@ -4,5 +4,9 @@
 
 <br>
 
-<%= link_to 'New Admission', new_admission_path %>
+<%= link_to new_admission_path do %>
+  <%= button_tag(class: "btn btn-primary", type: "button") do %>
+    <i class="fa fa-solid fa-circle-plus"></i> Pendaftaran Baru
+  <% end %>
+<% end %>
 
