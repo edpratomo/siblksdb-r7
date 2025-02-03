@@ -5,8 +5,8 @@ class InvoicesController < ApplicationController
   skip_after_action :verify_same_origin_request
   
   def search
-    #@invoices = Invoice.fuzzy_search(name: params[:q])
-    @invoices = Invoice.includes(:admission).references(:admissions).fuzzy_search({admissions: {name: params[:q]}})
+    @invoices = Admission.fuzzy_search(name: params[:q]).map {|e| e.invoices}.flatten
+    #@invoices = Invoice.includes(:admission).references(:admissions).fuzzy_search({admissions: {name: params[:q]}})
     render :layout => 'plain'
   end
 
@@ -16,7 +16,8 @@ class InvoicesController < ApplicationController
       Invoice,
       params[:filterrific],
       :select_options => {
-        sorted_by: Invoice.options_for_sorted_by
+        sorted_by: Invoice.options_for_sorted_by,
+        already_paid: Invoice.options_for_already_paid
       }
     ) or return
 

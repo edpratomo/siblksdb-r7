@@ -13,35 +13,22 @@
                        { class: 'form-control', data: {"filter-target": "filterParams", action: "change->filter#submit" } }
           %>
         </div>
+        <div class="form-group">
+          <label>Status Pembayaran</label>
+          <%= f.select :already_paid, @filterrific.select_options[:already_paid],
+                       { },
+                       { class: 'form-control', data: {"filter-target": "datePicker", action: "change->filter#submit" } }
+          %>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="form-group">
           <label>Cari Tagihan</label>
           <div class="input-group">
-          <!-- -->
-            <div class="input-group-prepend">
-              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                      Action
-              </button>
-              <ul class="dropdown-menu">
-                <li class="dropdown-item"><a href="#">Action</a></li>
-                <li class="dropdown-item"><a href="#">Admisi</a></li>
-                <li class="dropdown-item"><a href="#">Siswa</a></li>
-                <li class="dropdown-divider"></li>
-                <li class="dropdown-item"><a href="#">Separated link</a></li>
-              </ul>
-            </div>
-            <!-- -->
-            <div data-controller="autocomplete" data-autocomplete-url-value="<%= search_invoices_path %>" role="combobox">
-              <input type="text" class="form-control"  placeholder="Enter ..." data-autocomplete-target="input"/>
-              <input type="hidden" name="invoice_id" data-autocomplete-target="hidden"/>
-              <!-- <div class="autocomplete-results"> -->
-              <ul class="list-group autocomplete-results" data-autocomplete-target="results"></ul>
-              <!-- </div> -->
-            </div>
+            <%= f.text_field :with_names, {placeholder: "Atas nama...", class: "form-control", data: {"filter-target": "search", action: "input->filter#submitWithDelay" } } %>
             <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
+              <button type="submit" class="btn btn-default" data-action="click->filter#clear">
+                <i class="fas fa-remove"></i>
               </button>
             </div>
           </div>
