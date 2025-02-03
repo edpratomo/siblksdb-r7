@@ -1,5 +1,5 @@
 class Admission < ApplicationRecord
-  has_many :courses_admissions
+  has_many :courses_admissions, dependent: :destroy
   has_many :courses, through: :courses_admissions
 
   include Invoiceable
