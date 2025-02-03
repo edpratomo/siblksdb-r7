@@ -2,8 +2,8 @@ class Invoice < ApplicationRecord
   # invoice can be polymorphically applied to either admission or student
   belongs_to :invoiceable, polymorphic: true
 
-  belongs_to :admission, -> { where(invoices: { invoiceable_type: 'Admission' }) }, foreign_key: 'invoiceable_id'
-  belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
+  #belongs_to :admission, -> { where(invoices: { invoiceable_type: 'Admission' }) }, foreign_key: 'invoiceable_id'
+  #belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
 
   has_many :payments
   has_many :invoice_items  
@@ -17,24 +17,25 @@ class Invoice < ApplicationRecord
     default_filter_params: { sorted_by: 'created_at_asc' },
     available_filters: [
       :sorted_by,
-      :with_paid,
+      :already_paid,
       :with_created_at_gt,
       :with_created_at_lt,
-      :with_admission
+      :with_names
     ]
   )
 
   scope :sorted_by, ->(column_order) { 
     if Regexp.new('^(.+)_(asc|desc)$', Regexp::IGNORECASE).match(column_order)
-      if $1 == "name"
-      
-      end
       reorder("#{$1} #{$2}")
     end
   }
 
-  scope :with_paid, ->(true_or_false) {
-    where(:paid => true_or_false)
+  scope :already_paid, ->(true_or_false) {
+    if true_or_false == 1
+      where(paid: true)
+    else
+      where(paid: false)
+    end
   }
 
   scope :with_created_at_gt, ->(ref_date) {
@@ -45,8 +46,10 @@ class Invoice < ApplicationRecord
     where("created_at AT TIME ZONE 'Asia/Jakarta' < ?", ref_date.sub(Regexp.new('^(\d+)/(\d+)/(\d+)$'), '\2/\1/\3'))
   }
 
-  scope :with_admission, ->(admission) {
-    joins(:admission).where(admission: admission)
+  scope :with_names, ->(name) {
+    inv_ids = Admission.fuzzy_search(name: name).map {|e| e.invoices }.flatten.map {|e| e.id}
+    student_inv_ids = Student.fuzzy_search(name: name).map {|e| e.invoices }.flatten.map {|e| e.id}
+    where(id: inv_ids.concat(student_inv_ids))
   }
 
   def unpaid_amount
@@ -80,9 +83,16 @@ class Invoice < ApplicationRecord
 
   def self.options_for_sorted_by
     [
-      # ['Kepada (a-z)', 'invoices.invoiceable.name_asc'],
       ['Tanggal invoice (baru -> lama)', 'created_at_desc'],
       ['Tanggal invoice (lama -> baru)', 'created_at_asc'],
+    ]
+  end
+
+  def self.options_for_already_paid
+    [
+      ['Pilih', ''],
+      ['Lunas', '1'],
+      ['Kurang Bayar', '0']
     ]
   end
 
