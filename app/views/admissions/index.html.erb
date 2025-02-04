@@ -2,7 +2,7 @@
 <%= render 'filter' %>
 <%= render 'list', admissions: @admissions %>
 
-<br>
+<div>
 
 <%= link_to new_admission_path do %>
   <%= button_tag(class: "btn btn-primary", type: "button") do %>
@@ -10,3 +10,4 @@
   <% end %>
 <% end %>
 
+</div>

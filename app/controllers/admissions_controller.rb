@@ -7,8 +7,6 @@ class AdmissionsController < ApplicationController
 
   # GET /admissions or /admissions.json
   def index
-    # @admissions = Admission.all
-
     @filterrific = initialize_filterrific(
       Admission,
       params[:filterrific],
@@ -26,6 +24,11 @@ class AdmissionsController < ApplicationController
       format.html
       format.js { render partial: 'list', locals: { admissions: @admissions } }
     end
+  end
+
+  def suggestions
+    @admissions = Admission.fuzzy_search(name: params[:q])
+    render :layout => 'plain'
   end
 
   # GET /admissions/1 or /admissions/1.json

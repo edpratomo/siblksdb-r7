@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CustomAutocompleteController from "./custom_autocomplete_controller"
+application.register("custom-autocomplete", CustomAutocompleteController)
+
 import DatetimepickerController from "./datetimepicker_controller"
 application.register("datetimepicker", DatetimepickerController)
 
@@ -15,3 +18,6 @@ application.register("hello", HelloController)
 
 import PaymentModalController from "./payment_modal_controller"
 application.register("payment-modal", PaymentModalController)
+
+//import PopperController from "./popper_controller"
+//application.register("popper", PopperController)

@@ -1,6 +1,0 @@
-<% @invoices.each do |invoice| %>
-  <li class="list-group-item" role="option" data-autocomplete-value="<%= invoice.id %>" data-autocomplete-label="<%= invoice.invoiceable.name %>">
-    <%= invoice.invoiceable.name %> (<i><%= invoice.created_at %></i>)
-    <span class="badge">admisi</span>
-  </li>
-<% end %>

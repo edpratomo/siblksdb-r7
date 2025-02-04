@@ -19,7 +19,11 @@
       <div class="form-group row">
         <%= form.label :name, "Nama Lengkap", class: "control-label col-sm-3" %>
         <div class="col-sm-4">
-          <%= form.text_field :name, class: "form-control" %>
+          <% if admission.new_record? %>
+            <%= render 'autocomplete' %>
+          <% else %>
+            <%= form.text_field :name, class: "form-control" %>
+          <% end %>
         </div>
       </div>
       <!-- ./form-group row -->

@@ -1,16 +1,4 @@
 <div class="card" id="filterrific_results">
-  <div class="card-header">
-    <div class="card-tools">
-      <div class="input-group input-group-sm" style="width: 150px;">
-        <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-        <div class="input-group-append">
-          <button type="submit" class="btn btn-default">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="card-body table-responsive p-0">
     <table class="table table-hover">
       <thead>
@@ -23,7 +11,7 @@
         <th></th>
       </tr>
       </thead>
-      <tbody data-controller="payment-modal">
+      <tbody>
       <% @invoices.each do |invoice| %>
       <tr class="invoice_row" >
         <td><%= link_to invoice.id, invoice %></td>
