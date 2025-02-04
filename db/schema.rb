@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_07_025641) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_28_011231) do
   create_schema "siblksdb"
 
   # These are extensions that must be enabled in order to support this database
@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_07_025641) do
     t.text "modified_by"
     t.timestamptz "created_at", default: -> { "clock_timestamp()" }, null: false
     t.timestamptz "modified_at", default: -> { "clock_timestamp()" }, null: false
+    t.string "invoice_number"
+    t.index ["invoice_number"], name: "index_invoices_on_invoice_number", unique: true
   end
 
   create_table "payments", id: :serial, force: :cascade do |t|
@@ -105,6 +107,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_07_025641) do
     t.text "modified_by"
     t.timestamptz "created_at", default: -> { "clock_timestamp()" }, null: false
     t.timestamptz "updated_at", default: -> { "clock_timestamp()" }, null: false
+    t.string "method", default: "cash", null: false
   end
 
   create_table "refunds", id: :serial, force: :cascade do |t|
