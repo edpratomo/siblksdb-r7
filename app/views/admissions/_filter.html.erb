@@ -6,16 +6,16 @@
   <div class="card-body">
 
     <div class="form-group row">
-      <%= f.label :sorted_by, "Urutkan", class: "control-label col-sm-3" %>
-      <div class="col-sm-6">
+      <%= f.label :sorted_by, "Urutkan", class: "control-label col-md-2" %>
+      <div class="col-md-3">
         <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, 
             {class: "form-control", data: { action: "change->filter#submit", "filter-target": "filterParams" }}) %>
       </div>
     </div>
 
     <div class="form-group row">
-      <%= f.label :with_created_at_gt, "Terdaftar sebelum", class: "control-label col-sm-3" %>
-      <div class="col-sm-6">
+      <%= f.label :with_created_at_gt, "Terdaftar sebelum", class: "control-label col-md-2" %>
+      <div class="col-md-4">
         <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
           <%= f.text_field :with_created_at_lt, { name: "filterrific[with_created_at_lt]",
               data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
@@ -27,8 +27,8 @@
     </div>
 
     <div class="form-group row">
-      <%= f.label :with_created_at_gt, "Terdaftar setelah", class: "control-label col-sm-3" %>
-      <div class="col-sm-6">
+      <%= f.label :with_created_at_gt, "Terdaftar setelah", class: "control-label col-md-2" %>
+      <div class="col-md-4">
         <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
           <%= f.text_field :with_created_at_gt, { name: "filterrific[with_created_at_gt]", 
               data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
