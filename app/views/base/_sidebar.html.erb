@@ -54,7 +54,14 @@
                 <i class="nav-icon fa fa-undo"></i>
                 <p>
                   Pengembalian Dana
-                  <span id="refunds-count" class="right badge badge-danger"><%= outstanding_refunds_count %></span>
+                  <span id="refunds-count"
+                  <% if outstanding_refunds_count.empty? %>
+                  >
+                  <% else %>
+                   class="right badge badge-danger">
+                  <% end %>
+                  <%= outstanding_refunds_count %>
+                  </span>
                 </p>
               <% end %>
             </li>
