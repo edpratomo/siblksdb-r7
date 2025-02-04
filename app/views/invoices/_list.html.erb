@@ -16,7 +16,8 @@
       <thead>
       <tr>
         <th>ID</th>
-        <th>Kepada</th>
+        <th>Atas Nama</th>
+        <th>Tempat, Tanggal Lahir</th>
         <th>Tanggal</th>
         <th>Kurang Bayar</th>
         <th></th>
@@ -31,6 +32,7 @@
             <span class="badge bg-success">admisi</span>
             <% end %>
         </td>
+        <td><%= invoice.invoiceable.birthplace %>, <%= invoice.invoiceable.birthdate %></td>
         <td><%= invoice.created_at %></td>
         <td>
           <%= render 'status', invoice: invoice %>
