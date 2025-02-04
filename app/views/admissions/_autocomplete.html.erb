@@ -1,16 +1,7 @@
         <div class="form-group">
-          <div class="input-group">
-            <div data-controller="autocomplete custom-autocomplete" data-custom-autocomplete-target="input" data-action="autocomplete.change->custom-autocomplete#handleSelect" data-autocomplete-url-value="<%= suggestions_admissions_path %>" role="combobox">
+            <div data-controller="autocomplete custom-autocomplete" data-autocomplete-min-length-value="3" data-custom-autocomplete-target="input" data-action="autocomplete.change->custom-autocomplete#handleSelect" data-autocomplete-url-value="<%= suggestions_admissions_path %>" role="combobox">
               <input type="text"  class="form-control"  placeholder="Nama ..." data-autocomplete-target="input"/>
               <input type="hidden" name="admission_id" data-autocomplete-target="hidden"/>
-              <!-- <div class="autocomplete-results"> -->
               <ul class="list-group autocomplete-results" data-autocomplete-target="results"></ul>
-              <!-- </div> -->
             </div>
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-default">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
         </div>
