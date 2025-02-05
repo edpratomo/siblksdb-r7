@@ -1,0 +1,29 @@
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Daftar Pengguna</h3>
+  </div>
+  <div class="card-body">
+    <table id="example2" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Nama Lengkap</th>
+        <th>Group</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.fullname %></td>
+          <td><%= user.group.name %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <!-- ./card-body -->
+</div>
+<!-- ./card -->

@@ -1,15 +1,4 @@
-<p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Users" %>
+<% content_for :title, "Daftar Pengguna" %>
 
-
-<div id="admin_users">
-  <% @admin_users.each do |admin_user| %>
-    <%= render admin_user %>
-    <p>
-      <%= link_to "Show this user", admin_user_path(admin_user) %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New user", new_admin_user_path %>
+<%= render 'list', users: @admin_users %>
