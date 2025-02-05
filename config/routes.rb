@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :users
+  end
   resources :refunds do
     collection do
       get ':invoice_id/new' => 'refunds#new', as: "new"
