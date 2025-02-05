@@ -40,6 +40,11 @@ document.addEventListener("turbo:load", () => {
     }
   });
   */
+  $("#datatable_with_search").DataTable({
+    "responsive": true, "lengthChange": false, "autoWidth": false,
+    "searching": true, "paging": true, "ordering": true, "info": true
+  });
+
   $('#example2').DataTable({
     "paging": true,
     "lengthChange": false,
