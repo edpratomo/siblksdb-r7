@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def admin?
     group.name == "sysadmin" or group.name == "admin"
   end
+
+  def self.options_for_group
+    Group.where.not(name: "student").map {|e| [e.name, e.id]}
+  end
 end

@@ -6,6 +6,8 @@ class Course < ApplicationRecord
   has_many :courses_admissions
   has_many :admissions, through: :courses_admissions
   has_many :course_fees
+  has_many :fees, through: :courses_admissions
+
   belongs_to :program
 
   def self.options_for_select

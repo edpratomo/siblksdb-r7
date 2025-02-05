@@ -1,17 +1,87 @@
-<%= form_with(model: admin_user, url: admin_users_path) do |form| %>
-  <% if admin_user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(admin_user.errors.count, "error") %> prohibited this admin_user from being saved:</h2>
-
-      <ul>
-        <% admin_user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with(model: admin_user, url: admin_users_path, html: { class: "form-horizontal", role: "form" }) do |form| %>
+  <!-- Default box -->
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title">
+      <% if admin_user.new_record? %>
+        Menambahkan Pengguna Baru
+      <% else %>
+        Data Pengguna: <%= admin_user.username %>
+      <% end %>
+      </h3>
     </div>
-  <% end %>
+    <div class="card-body">
+      <% if admin_user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(admin_user.errors.count, "error") %> prohibited this admin_user from being saved:</h2>
 
-  <div>
-    <%= form.submit %>
+          <ul>
+            <% admin_user.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% if admin_user.new_record? %>
+        <div class="form-group row">
+          <%= form.label :name, class: "control-label col-sm-3" do %>
+          Username <span class="required">*</span>
+          <% end %>
+          <div class="col-sm-4">
+            <%= form.text_field :username, class: "form-control", required: true %>
+          </div>
+        </div>
+      <% end %>
+      <div class="form-group row">
+        <%= form.label :name, class: "control-label col-sm-3" do %>
+        Nama Lengkap <span class="required">*</span>
+        <% end %>
+        <div class="col-sm-4">
+          <%= form.text_field :fullname, class: "form-control", required: true %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :name, class: "control-label col-sm-3" do %>
+        Group <span class="required">*</span>
+        <% end %>
+        <div class="col-sm-4">
+                          <%= form.select :group_id, User.options_for_group, 
+                              {include_blank: "- Pilih -"},
+                              { class: "form-control", required: true }
+                          %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :name, class: "control-label col-sm-3" do %>
+        Email <span class="required">*</span>
+        <% end %>
+        <div class="col-sm-4">
+          <%= form.text_field :email, class: "form-control", required: true %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :name, "Password", class: "control-label col-sm-3" %>
+        <div class="col-sm-4">
+          <%= form.password_field :password, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label :name, "Konfirmasi Password", class: "control-label col-sm-3" %>
+        <div class="col-sm-4">
+          <%= form.password_field :password_confirmation, class: "form-control" %>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+    <!-- /.card-footer-->
   </div>
+  <!-- /.card -->
 <% end %>
