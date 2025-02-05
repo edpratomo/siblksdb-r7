@@ -62,37 +62,37 @@
                 <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                   Pengaturan Biaya
-                  <i class="right fas fa-angle-left"></i>
+                  <i class="right fas <%= active_arrow_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview" <%= expand_treeview(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>>
                 <li class="nav-item">
-                  <%= link_to admission_fees_path, {class: "nav-link"} do %>
+                  <%= link_to admission_fees_path, {class: "nav-link #{active_tab_class(admission_fees_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
                     <p>Biaya Admisi</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to book_uniform_fees_path, {class: "nav-link"} do %>
+                  <%= link_to book_uniform_fees_path, {class: "nav-link #{active_tab_class(book_uniform_fees_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
                     <p>Biaya Buku &amp; Seragam</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to reg_course_fees_path, {class: "nav-link"} do %>
+                  <%= link_to reg_course_fees_path, {class: "nav-link #{active_tab_class(reg_course_fees_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kursus Reguler</p>
                   </a>
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to int_course_fees_path, {class: "nav-link"} do %>
+                  <%= link_to int_course_fees_path, {class: "nav-link #{active_tab_class(int_course_fees_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kursus Intensif</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to ext_course_fees_path, {class: "nav-link"} do %>
+                  <%= link_to ext_course_fees_path, {class: "nav-link #{active_tab_class(ext_course_fees_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
                     <p>Kursus Tambahan</p>
                   <% end %>
@@ -104,21 +104,21 @@
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Kelola Pengguna
-                  <i class="fas fa-angle-left right"></i>
+                  <i class="fas <%= active_arrow_class(admin_users_path, new_admin_user_path) %> right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <ul class="nav nav-treeview" <%= expand_treeview(admin_users_path, new_admin_user_path) %>>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to admin_users_path, {class: "nav-link #{active_tab_class(admin_users_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>General</p>
-                  </a>
+                    <p>Daftar Pengguna</p>
+                  <% end %>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <%= link_to new_admin_user_path, {class: "nav-link #{active_tab_class(new_admin_user_path)}"} do %>
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Icons</p>
-                  </a>
+                    <p>Pengguna Baru</p>
+                  <% end %>
                 </li>
               </ul>
             </li>
