@@ -1,0 +1,28 @@
+          <div id="<%= dom_id user %>" class="col-md-6">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  <%= user.fullname %> (<%= user.username %>)
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <dl class="row">
+                  <dt class="col-sm-4">Nama Lengkap</dt>
+                  <dd class="col-sm-8"><%= user.fullname %></dd>
+                  <dt class="col-sm-4">Email</dt>
+                  <dd class="col-sm-8"><%= user.email %></dd>
+<!--                  <dd class="col-sm-8 offset-sm-4">Donec id elit non mi porta gravida at eget metus.</dd> -->
+                  <dt class="col-sm-4">Group</dt>
+                  <dd class="col-sm-8"><%= user.group.name %></dd>
+                  <dt class="col-sm-4">Tanggal dibuat</dt>
+                  <dd class="col-sm-8"><%= user.created_at %></dd>
+                  <dt class="col-sm-4">Terakhir diperbarui</dt>
+                  <dd class="col-sm-8"><%= user.updated_at %></dd>
+                </dl>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
