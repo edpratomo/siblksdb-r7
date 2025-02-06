@@ -16,7 +16,7 @@ export default class extends Controller {
       return;
     }
     const value = this.amountTarget.value;
-    const separated = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    const separated = value.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
     this.amountTarget.value = separated;
   }
 }

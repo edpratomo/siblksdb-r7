@@ -87,6 +87,9 @@ class PaymentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def payment_params
-      params.fetch(:payment, {}).permit(:amount, :method)
+      params.fetch(:payment, {}).permit(:amount, :method).tap do |whitelisted|
+        # ungroup digits
+        whitelisted[:amount] = whitelisted[:amount].tr('.', '').to_i #  gsub(/[^0-9.]/, '').to_f
+      end
     end
 end

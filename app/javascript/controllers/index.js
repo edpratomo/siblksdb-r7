@@ -10,14 +10,14 @@ application.register("custom-autocomplete", CustomAutocompleteController)
 import DatetimepickerController from "./datetimepicker_controller"
 application.register("datetimepicker", DatetimepickerController)
 
+import DigitGroupingController from "./digit_grouping_controller"
+application.register("digit-grouping", DigitGroupingController)
+
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-//import PaymentModalController from "./payment_modal_controller"
-//application.register("payment-modal", PaymentModalController)
-
-//import PopperController from "./popper_controller"
-//application.register("popper", PopperController)
+import PopperController from "./popper_controller"
+application.register("popper", PopperController)
