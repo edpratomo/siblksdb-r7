@@ -19,5 +19,8 @@ application.register("filter", FilterController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InvoiceDetailController from "./invoice_detail_controller"
+application.register("invoice-detail", InvoiceDetailController)
+
 import PopperController from "./popper_controller"
 application.register("popper", PopperController)

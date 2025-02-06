@@ -4,12 +4,6 @@ class InvoicesController < ApplicationController
 
   skip_after_action :verify_same_origin_request
   
-  def search
-    @invoices = Admission.fuzzy_search(name: params[:q]).map {|e| e.invoices}.flatten
-    #@invoices = Invoice.includes(:admission).references(:admissions).fuzzy_search({admissions: {name: params[:q]}})
-    render :layout => 'plain'
-  end
-
   # GET /invoices or /invoices.json
   def index
     @filterrific = initialize_filterrific(
@@ -33,6 +27,13 @@ class InvoicesController < ApplicationController
   def show
     if params[:inline]
       render partial: 'status', locals: {invoice: @invoice}
+    elsif params[:modal]
+      render partial: 'show_modal', locals: {invoice: @invoice}
+    else
+      respond_to do |format|
+        format.html
+        format.json { render :show, status: :ok, location: @invoice }
+      end
     end
   end
 
