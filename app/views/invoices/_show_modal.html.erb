@@ -55,3 +55,16 @@
           </table>
         </p>
         <% end %>
+
+        <% if invoice.refund %>
+        <p>
+          <dl class="row">
+            <dt class="col-sm-4">Lebih Bayar</dt>
+            <dd class="col-sm-8"><%= number_to_currency(invoice.refund.amount) %></dd>
+            <% if invoice.refund.paid_at %>
+              <dt class="col-sm-4">Sudah dikembalikan tanggal</dt>
+              <dd class="col-sm-8"><%= invoice.refund.paid_at %></dd>
+            <% end %>
+          </dl>
+        </p>
+        <% end %>
