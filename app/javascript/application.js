@@ -45,7 +45,7 @@ document.addEventListener("turbo:load", () => {
     "searching": true, "paging": true, "ordering": true, "info": true
   });
 
-  $('#example2').DataTable({
+  $('#datatable_plain').DataTable({
     "paging": true,
     "lengthChange": false,
     "searching": false,
