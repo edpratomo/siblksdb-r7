@@ -9,7 +9,7 @@
         <th>Username</th>
         <th>Nama Lengkap</th>
         <th>Group</th>
-        <th></th>
+        <th></th><th></th>
       </tr>
       </thead>
       <tbody>
@@ -18,7 +18,15 @@
           <td><%= user.username %></td>
           <td><%= user.fullname %></td>
           <td><%= user.group.name %></td>
-          <td></td>
+          <td style="text-align:right">
+            <%= link_to edit_admin_user_path(user) do %>
+              <%= button_tag("Edit", class: "btn btn-primary", type: "button", disabled: user.first_sysadmin?) %>
+            <% end %>
+          </td>
+          <td>
+            <%= button_to("Delete", admin_user_path(user), method: :delete, data: { turbo_confirm: "Are you sure?" }, 
+                class: "btn btn-danger", type: "button", disabled: user.first_sysadmin?) %>
+          </td>
         </tr>
       <% end %>
       </tbody>

@@ -13,6 +13,10 @@ class User < ApplicationRecord
     group.name == "sysadmin" or group.name == "admin"
   end
 
+  def first_sysadmin?
+    self.id == User.joins(:group).where("group.name": "sysadmin").order(:id).first.id
+  end
+  
   def self.options_for_group
     Group.where.not(name: "student").map {|e| [e.name, e.id]}
   end
