@@ -7,7 +7,7 @@
         <th>ID</th>
         <th>Kepada</th>
         <th>Tanggal</th>
-        <th>Lebih Bayar</th>
+        <th style="text-align:center">Lebih Bayar</th>
         <th></th>
       </tr>
       </thead>
@@ -17,7 +17,7 @@
         <td><%= link_to refund.id, refund %></td>
         <td><%= link_to refund.invoice.invoiceable.name, refund.invoice.invoiceable %></td>
         <td><%= refund.created_at %></td>
-        <td>
+        <td style="text-align:right">
           <%= render 'status', refund: refund %>
         </td>
         <td>
