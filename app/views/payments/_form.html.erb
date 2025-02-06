@@ -16,11 +16,12 @@
         <div class="col-sm-6">
           <div class="form-group row">
             <!-- <div class="col-sm-8"> -->
-              <div class="input-group">
+              <div class="input-group" data-controller="digit-grouping">
                 <div class="input-group-prepend">
                   <span class="input-group-text">Rp</span>
                 </div>
-                <%= form.number_field :amount, autofocus: true, required: true, value: remaining_balance, class: "form-control" %>
+                <%= form.text_field :amount, autofocus: true, required: true, value: remaining_balance, class: "form-control",
+                    data: {"digit-grouping-target": "amount", action: "input->digit-grouping#separate"}  %>
                 <div class="input-group-append">
                   <span class="input-group-text">,00</span>
                 </div>
