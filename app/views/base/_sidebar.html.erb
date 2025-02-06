@@ -1,0 +1,131 @@
+<!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="#" class="brand-link">
+        <%= image_tag("smaller-logo2.png", alt: "AdminLTE Logo", class: "brand-image elevation-3", style: "opacity: .8") %>
+        <span class="brand-text font-weight-light">BLK Don Bosco</span>
+      </a>
+  
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <%= render 'base/sidebar_user_panel' %>
+        <%#= render 'base/sidebar_search' %>
+  
+        <!-- Sidebar Menu -->
+        <nav class="mt-2 d-flex">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item">
+              <%= link_to root_path, class: "nav-link" do %>
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Home
+                </p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to admissions_path, class: "nav-link" do %>
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                  Admisi
+                </p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to invoices_path, class: "nav-link" do %>
+                <i class="nav-icon fas fa-file-invoice"></i>
+                <p>
+                  Tagihan &amp; Pembayaran
+                </p>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to refunds_path, class: "nav-link" do %>
+                <i class="nav-icon fa fa-undo"></i>
+                <p>
+                  Pengembalian Dana
+                  <span id="refunds-count"
+                  <% if outstanding_refunds_count.empty? %>
+                  >
+                  <% else %>
+                   class="right badge badge-danger">
+                  <% end %>
+                  <%= outstanding_refunds_count %>
+                  </span>
+                </p>
+              <% end %>
+            </li>
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-dollar-sign"></i>
+                <p>
+                  Pengaturan Biaya
+                  <i class="right fas <%= active_arrow_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview" <%= expand_treeview(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>>
+                <li class="nav-item">
+                  <%= link_to admission_fees_path, {class: "nav-link #{active_tab_class(admission_fees_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Biaya Admisi</p>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to book_uniform_fees_path, {class: "nav-link #{active_tab_class(book_uniform_fees_path)}"} do %>
+                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <p>Biaya Buku &amp; Seragam</p>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to reg_course_fees_path, {class: "nav-link #{active_tab_class(reg_course_fees_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kursus Reguler</p>
+                  </a>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to int_course_fees_path, {class: "nav-link #{active_tab_class(int_course_fees_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kursus Intensif</p>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to ext_course_fees_path, {class: "nav-link #{active_tab_class(ext_course_fees_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Kursus Tambahan</p>
+                  <% end %>
+                </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                  Kelola Pengguna
+                  <i class="fas <%= active_arrow_class(admin_users_path, new_admin_user_path) %> right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview" <%= expand_treeview(admin_users_path, new_admin_user_path) %>>
+                <li class="nav-item">
+                  <%= link_to admin_users_path, {class: "nav-link #{active_tab_class(admin_users_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Daftar Pengguna</p>
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_admin_user_path, {class: "nav-link #{active_tab_class(new_admin_user_path)}"} do %>
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Pengguna Baru</p>
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+    

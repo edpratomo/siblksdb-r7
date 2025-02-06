@@ -1,0 +1,34 @@
+<div class="card" id="filterrific_results">
+  <div class="card-body">
+
+    <table id="admissions_table" class="table table-bordered table-hover">
+      <thead>
+      <tr>
+        <th>Nama</th>
+        <th>Tempat, Tanggal Lahir</th>
+        <th>Kursus</th>
+        <th>Tanggal Pendaftaran</th>
+        <th colspan="2"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% admissions.each do |admission| %>
+        <tr>
+          <td><%= admission.name %></td>
+          <td><%= admission.birthplace %>, <%= admission.birthdate %></td>
+          <td><%= admission.courses.map {|e| "#{e.program.program} - #{e.name}" }.join(", ") %></td>
+          <td><%= admission.created_at %></td>
+          <td><%= link_to 'Edit', edit_admission_path(admission) %></td>
+          <td><%= link_to 'Destroy', admission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+<!-- ./card-body -->
+  <div class="card-footer">
+    <%= will_paginate admissions %>
+  </div>
+</div>
+<!-- ./card -->

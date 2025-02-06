@@ -1,0 +1,5 @@
+<% @admissions.each do |admission| %>
+  <li class="list-group-item" role="option" data-autocomplete-value="<%= admission.id %>" data-autocomplete-label="<%= admission.name %>">
+    <%= admission.name %> (<%= admission.birthplace %>, <%= admission.birthdate %>)
+  </li>
+<% end %>

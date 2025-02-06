@@ -1,0 +1,11 @@
+<% content_for :title, "New refund" %>
+
+<h1>New refund</h1>
+
+<%= render "form", refund: @refund %>
+
+<br>
+
+<div>
+  <%= link_to "Back to refunds", refunds_path %>
+</div>

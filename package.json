@@ -12,6 +12,7 @@
     "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.12",
     "@popperjs/core": "^2.11.8",
@@ -20,10 +21,14 @@
     "bootstrap": "4.6",
     "bootstrap-icons": "^1.11.3",
     "bootstrap4-dialog": "^4.4.4",
+    "lodash": "^4.17.21",
     "nodemon": "^3.1.7",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
-    "sass": "^1.81.0"
+    "sass": "^1.81.0",
+    "stimulus-autocomplete": "^3.1.0",
+    "stimulus-datepicker": "^1.0.9",
+    "toastr": "^2.1.4"
   },
   "browserslist": [
     "defaults"

@@ -1,0 +1,2 @@
+class RegCourseFee < CourseFee
+end

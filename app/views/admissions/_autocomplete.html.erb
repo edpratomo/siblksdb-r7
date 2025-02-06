@@ -1,0 +1,8 @@
+        <div class="form-group">
+            <div data-controller="autocomplete custom-autocomplete" data-autocomplete-min-length-value="3" data-custom-autocomplete-target="input" data-action="autocomplete.change->custom-autocomplete#handleSelect" data-autocomplete-url-value="<%= suggestions_admissions_path %>" role="combobox">
+              <%= form.text_field :name, class: "form-control", placeholder: "Nama ...", data: {"autocomplete-target": "input"},
+                  required: true %>
+              <input type="hidden" name="admission_id" data-autocomplete-target="hidden"/>
+              <ul class="list-group autocomplete-results" data-autocomplete-target="results"></ul>
+            </div>
+        </div>

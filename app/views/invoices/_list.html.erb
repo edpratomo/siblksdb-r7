@@ -1,0 +1,44 @@
+<div class="card" id="filterrific_results">
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Atas Nama</th>
+        <th>Tempat, Tanggal Lahir</th>
+        <th>Tanggal</th>
+        <th>Kurang Bayar</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody data-controller="invoice-detail">
+      <% @invoices.each do |invoice| %>
+      <tr class="invoice_row" >
+        <td><%= link_to invoice.id, invoice %></td>
+        <td><%= link_to invoice.invoiceable.name, invoice.invoiceable %> 
+            <% if invoice.invoiceable.is_a?(Admission) %>
+            <span class="badge bg-success">admisi</span>
+            <% end %>
+        </td>
+        <td><%= invoice.invoiceable.birthplace %>, <%= invoice.invoiceable.birthdate %></td>
+        <td><%= invoice.created_at %></td>
+        <td>
+          <%= render 'status', invoice: invoice %>
+        </td>
+        <td>
+          <%= button_tag "Rincian", class: "btn btn-sm btn-primary", 
+              data: { "invoice-detail-target": "modal", 
+                      action: "click->invoice-detail#open",  "invoice-detail-invoice-param": invoice.id } 
+          %>
+        </td>
+      </tr>
+            
+      <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+  <%= will_paginate invoices %>
+</div>

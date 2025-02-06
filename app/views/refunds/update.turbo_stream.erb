@@ -1,0 +1,6 @@
+<%= turbo_stream.replace(dom_id(@refund)) do %>
+  <%= render 'status', refund: @refund %>
+<% end %>
+<%= turbo_stream.replace("refunds-count") do %>
+  <%= refunds_count_badge %>
+<% end %>

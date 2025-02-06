@@ -1,0 +1,112 @@
+<%= form_with(model: admission, html: { class: "form-horizontal", role: "form"}) do |form| %>
+  <!-- Default box -->
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title">Pendaftaran Calon Siswa</h3>
+    </div>
+    <div class="card-body">
+      <% if admission.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
+          <ul>
+            <% admission.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="form-group row">
+        <%= form.label :name, "Nama Lengkap", class: "control-label col-sm-3" %>
+        <div class="col-sm-4">
+          <% if admission.new_record? %>
+            <%= render 'autocomplete', form: form %>
+          <% else %>
+            <%= form.text_field :name, class: "form-control" %>
+          <% end %>
+        </div>
+      </div>
+      <!-- ./form-group row -->
+      <div class="form-group row ">
+        <div class="col-sm-3">
+          <%= form.label :sex, "Jenis kelamin", class: "control-label sr-only" %>
+        </div>
+        <div class="icheck-primary d-inline px-3">
+          <%= form.radio_button :sex, "female", checked: true %>
+          <%= form.label "sex_female", "Perempuan" %>
+        </div>
+        <div class="icheck-primary d-inline px-3">
+          <%= form.radio_button :sex, "male" %>
+          <%= form.label "sex_male", "Laki-laki" %>
+        </div>
+      </div>
+      <!-- ./form-group row -->
+      <div class="form-group row">
+        <%= form.label :birthplace, "Tempat, Tanggal Lahir", class: "control-label col-sm-3" %>
+        <div class="col-sm-7 form-inline">
+          <%= form.text_field :birthplace, class: "form-control" %>
+          <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <%= form.text_field :birthdate, class: "form-control datetimepicker-input", "data-target": "#datetimepicker1", "data-date-format": "DD/MM/YYYY", placeholder: "dd/mm/yyyy", value: @admission.birthdate ? @admission.birthdate.strftime("%d/%m/%Y") : nil %>
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./form-group row -->
+      <div class="form-group row">
+        <%= form.label :courses, "Pilihan Kursus", class: "control-label col-sm-3" %>
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <!-- first col -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <% courses_options.each_with_index do |option, idx| %>
+                          <% if idx <= (courses_options.size.to_f / 2).ceil %>
+                          <div class="icheck-primary">
+                            <%= form.check_box(:course_ids, {multiple: true}, option[0], nil) %>
+                            <label for="admission_course_ids_<%= option[0] %>"><%= option[1] %></label>
+                          </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col-md-6 -->
+                <!-- beginning of second col -->
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group">
+                        <% courses_options.each_with_index do |option, idx| %>
+                          <% if idx > (courses_options.size.to_f / 2).ceil %>
+                          <div class="icheck-primary">
+                            <%= form.check_box(:course_ids, {multiple: true}, option[0], nil) %>
+                            <label for="admission_course_ids_<%= option[0] %>"><%= option[1] %></label>
+                          </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ./col-md-6 -->
+              </div>
+              <!-- ./row -->
+            </div>
+            <!-- ./container-fluid -->
+          </section>
+      </div>
+      <!-- ./form-group row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+    <!-- /.card-footer-->
+  </div>
+  <!-- /.card -->
+<% end %>

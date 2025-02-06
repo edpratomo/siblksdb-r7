@@ -1,0 +1,21 @@
+<%= turbo_frame_tag(dom_id(refund)) do %>
+  <% if refund.paid_at %>
+    <div class="row">
+      <div class="col">
+      Dikembalikan <%= refund.paid_at %>
+      </div>
+      <div class="col-6">
+        <%= button_tag "Bayar", class: "btn btn-sm btn-warning disabled", type: "button" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col">
+      <%= number_to_currency refund.amount %>
+      </div>
+      <div class="col-6">
+      <%= button_to "Bayar", refund_path(refund), {class: "btn btn-sm btn-warning", method: "patch", params: {"refund[paid_at]": Time.now}} %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

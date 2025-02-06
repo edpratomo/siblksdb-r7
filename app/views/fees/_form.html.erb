@@ -1,0 +1,60 @@
+<%= form_with(model: fee) do |form| %>
+  <!-- Default box -->
+  <div class="card card-info">
+    <div class="card-header">
+      <h3 class="card-title"><%= humanize_class(fee.type) %></h3>
+    </div>
+    <div class="card-body">
+      <% if fee.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(fee.errors.count, "error") %> prohibited this fee from being saved:</h2>
+
+          <ul>
+            <% fee.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  
+      <%= form.hidden_field :type, value: fee.type %>
+      <div class="row">
+        <div class="col-sm">
+          <!-- text input -->
+          <div class="form-group">
+            <%= form.label :amount, "Harga" %>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Rp</span>
+              </div>
+              <%= form.text_field :amount, { class: "form-control"} %>
+              <div class="input-group-append">
+                <span class="input-group-text">,00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm">
+          <!-- Date and time -->
+          <div class="form-group">
+            <%= form.label :active_since, "Berlaku mulai:" %>
+            <div class="input-group date" id="reservationdatetime" data-target-input="nearest" data-controller="datetimepicker">
+              <%= form.text_field :active_since, {class: "form-control datetimepicker-input", "data-target": "#reservationdatetime"} %>
+              <div class="input-group-append" data-target="#reservationdatetime" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ./row -->
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+    <!-- /.card-footer-->
+  </div>
+  <!-- /.card -->
+
+<% end %>

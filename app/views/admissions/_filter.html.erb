@@ -1,0 +1,54 @@
+<%= form_for_filterrific @filterrific, html: { class: "form-horizontal", role: "form" }, data: { controller: "filter" } do |f| %>
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Pendaftaran Calon Siswa</h3>
+  </div>
+  <div class="card-body">
+
+    <div class="form-group row">
+      <%= f.label :sorted_by, "Urutkan", class: "control-label col-md-2" %>
+      <div class="col-md-3">
+        <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, 
+            {class: "form-control", data: { action: "change->filter#submit", "filter-target": "filterParams" }}) %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :with_created_at_gt, "Terdaftar sebelum", class: "control-label col-md-2" %>
+      <div class="col-md-4">
+        <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
+          <%= f.text_field :with_created_at_lt, { name: "filterrific[with_created_at_lt]",
+              data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
+          <div class="input-group-append" data-datepicker-target="toggle">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :with_created_at_gt, "Terdaftar setelah", class: "control-label col-md-2" %>
+      <div class="col-md-4">
+        <div class="input-group date" data-target-input="nearest" data-controller="datepicker">
+          <%= f.text_field :with_created_at_gt, { name: "filterrific[with_created_at_gt]", 
+              data: { "datepicker-target": "input", "filter-target": "datePicker", action: "change->filter#submit" } } %>
+          <div class="input-group-append" data-datepicker-target="toggle">
+            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <!-- ./card-body -->
+  <div class="card-footer">
+    <div>
+      <%= link_to('Reset filters', reset_filterrific_url) %>
+    </div>
+    <%# add an automated spinner to your form when the list is refreshed %>
+    <%= render_filterrific_spinner %>
+  </div>
+  <!-- ./card-footer -->
+</div>
+<!-- ./card -->
+<% end %>

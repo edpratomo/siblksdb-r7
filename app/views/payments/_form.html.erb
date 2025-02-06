@@ -1,0 +1,59 @@
+<%= turbo_frame_tag(dom_id(invoice)) do %>
+<%= form_with(model: payment, url: create_payments_path) do |form| %>
+  <div class="card card-info">
+    <div class="card-body">
+      <% if payment.errors.any? %>
+        <div style="color: red">
+          <h2><%= pluralize(payment.errors.count, "error") %> prohibited this payment from being saved:</h2>
+          <ul>
+            <% payment.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group row">
+            <!-- <div class="col-sm-8"> -->
+              <div class="input-group" data-controller="digit-grouping">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Rp</span>
+                </div>
+                <%= form.text_field :amount, autofocus: true, required: true, 
+                    value: number_to_currency(remaining_balance, unit: '', precision: 0), 
+                    class: "form-control",
+                    data: {"digit-grouping-target": "amount", action: "input->digit-grouping#separate"}  %>
+                <div class="input-group-append">
+                  <span class="input-group-text">,00</span>
+                </div>
+              </div>
+            <!-- </div> -->
+          </div>
+          <!-- ./form-group -->
+        </div>
+        <div class="col-sm-6">
+          <!-- radio -->
+          <div class="form-group row ">
+            <div class="icheck-primary d-inline px-3">
+              <%= form.radio_button :method, "cash", checked: true %>
+              <%= form.label "method_cash", "Tunai" %>
+            </div>
+            <div class="icheck-primary d-inline px-3">
+              <%= form.radio_button :method, "bank_transfer" %>
+              <%= form.label "method_bank_transfer", "Transfer Bank" %>
+            </div>
+          </div>
+          <!-- ./form-group -->
+        </div>
+      </div>     
+    </div>
+    <!-- ./card-body -->
+    <div class="card-footer">
+      <%= link_to "Cancel", invoice_path(invoice, inline: true), class: "btn btn-default" %>
+      <%= form.button "Bayar", class: "btn btn-primary", type: "submit", data: { "turbo-confirm": "Are you sure?" } %>
+    </div>
+  </div>
+  <!-- ./card -->
+<% end %>
+<% end %>

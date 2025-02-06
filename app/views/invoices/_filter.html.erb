@@ -1,0 +1,40 @@
+<div class="card card-info">
+  <div class="card-header">
+    <h3 class="card-title">Tagihan &amp; Pembayaran</h3>
+  </div>
+  <div class="card-body">
+  <%= form_for_filterrific @filterrific, data: {"turbo-frame": "invoices-list", "controller": "filter"} do |f| %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Urutkan</label>
+          <%= f.select :sorted_by, @filterrific.select_options[:sorted_by],
+                       { },
+                       { class: 'form-control', data: {"filter-target": "filterParams", action: "change->filter#submit" } }
+          %>
+        </div>
+        <div class="form-group">
+          <label>Status Pembayaran</label>
+          <%= f.select :already_paid, @filterrific.select_options[:already_paid],
+                       { },
+                       { class: 'form-control', data: {"filter-target": "datePicker", action: "change->filter#submit" } }
+          %>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Cari Tagihan</label>
+          <div class="input-group">
+            <%= f.text_field :with_names, {placeholder: "Atas nama...", class: "form-control", data: {"filter-target": "search", action: "input->filter#submitWithDelay" } } %>
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-default" data-action="click->filter#clear">
+                <i class="fas fa-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+</div>

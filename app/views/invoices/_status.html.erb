@@ -1,0 +1,23 @@
+<%= turbo_frame_tag(dom_id(invoice)) do %>
+  <% if invoice.paid %>
+    <div class="row">
+      <div class="col">
+      Lunas
+      </div>
+      <div class="col-6">
+        <%= button_tag "Bayar", class: "btn btn-sm btn-warning disabled", type: "button" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="row">
+      <div class="col">
+      <%= number_to_currency invoice.unpaid_amount %>
+      </div>
+      <div class="col-6">
+      <%= link_to new_payments_path(invoice_id: invoice.id) do %>
+        <%= button_tag "Bayar", class: "btn btn-sm btn-warning", type: "button" %>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

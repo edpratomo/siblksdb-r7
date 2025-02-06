@@ -1,0 +1,39 @@
+<div class="card" id="filterrific_results">
+  
+  <div class="card-body table-responsive p-0">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Kepada</th>
+        <th>Tanggal</th>
+        <th style="text-align:center">Lebih Bayar</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody data-controller="invoice-detail">
+      <% @refunds.each do |refund| %>
+      <tr>
+        <td><%= link_to refund.id, refund %></td>
+        <td><%= link_to refund.invoice.invoiceable.name, refund.invoice.invoiceable %></td>
+        <td><%= refund.created_at %></td>
+        <td style="text-align:right">
+          <%= render 'status', refund: refund %>
+        </td>
+        <td>
+          <%= button_tag "Rincian", class: "btn btn-sm btn-primary", 
+              data: { "invoice-detail-target": "modal", 
+                      action: "click->invoice-detail#open",  "invoice-detail-invoice-param": refund.invoice.id } 
+          %>
+        </td>
+      </tr>
+            
+      <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+  <%= will_paginate @refunds %>
+</div>
