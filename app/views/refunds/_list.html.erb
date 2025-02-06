@@ -11,7 +11,7 @@
         <th></th>
       </tr>
       </thead>
-      <tbody>
+      <tbody data-controller="invoice-detail">
       <% @refunds.each do |refund| %>
       <tr>
         <td><%= link_to refund.id, refund %></td>
@@ -21,9 +21,10 @@
           <%= render 'status', refund: refund %>
         </td>
         <td>
-            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-lg-<%= refund.id %>">
-            Rincian
-            </button>
+          <%= button_tag "Rincian", class: "btn btn-sm btn-primary", 
+              data: { "invoice-detail-target": "modal", 
+                      action: "click->invoice-detail#open",  "invoice-detail-invoice-param": refund.invoice.id } 
+          %>
         </td>
       </tr>
             
@@ -36,7 +37,3 @@
   <div class="card-footer">
   <%= will_paginate @refunds %>
 </div>
-
-<% @refunds.each do |refund| %>
-<%= render 'detail', refund: refund, invoice: refund.invoice %>
-<% end %>
