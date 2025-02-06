@@ -8,7 +8,6 @@
       <% if admission.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(admission.errors.count, "error") %> prohibited this admission from being saved:</h2>
-
           <ul>
             <% admission.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -20,7 +19,7 @@
         <%= form.label :name, "Nama Lengkap", class: "control-label col-sm-3" %>
         <div class="col-sm-4">
           <% if admission.new_record? %>
-            <%= render 'autocomplete' %>
+            <%= render 'autocomplete', form: form %>
           <% else %>
             <%= form.text_field :name, class: "form-control" %>
           <% end %>
