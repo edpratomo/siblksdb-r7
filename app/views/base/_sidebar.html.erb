@@ -17,7 +17,7 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <%= link_to root_path, class: "nav-link" do %>
+              <%= link_to root_path, class: "nav-link #{active_tab_class(root_path)}" do %>
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Home
@@ -25,7 +25,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admissions_path, class: "nav-link" do %>
+              <%= link_to admissions_path, class: "nav-link #{active_tab_class(admissions_path)}" do %>
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Admisi
@@ -33,7 +33,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to invoices_path, class: "nav-link" do %>
+              <%= link_to invoices_path, class: "nav-link #{active_tab_class(invoices_path)}" do %>
                 <i class="nav-icon fas fa-file-invoice"></i>
                 <p>
                   Tagihan &amp; Pembayaran
@@ -41,7 +41,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to refunds_path, class: "nav-link" do %>
+              <%= link_to refunds_path, class: "nav-link #{active_tab_class(refunds_path)}" do %>
                 <i class="nav-icon fa fa-undo"></i>
                 <p>
                   Pengembalian Dana
@@ -58,7 +58,7 @@
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link <%= active_tab_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>">
                 <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                   Pengaturan Biaya
@@ -100,7 +100,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link <%= active_tab_class(admin_users_path, new_admin_user_path) %>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Kelola Pengguna
