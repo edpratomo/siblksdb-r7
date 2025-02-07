@@ -2,6 +2,10 @@ class Admission < ApplicationRecord
   has_many :courses_admissions, dependent: :destroy
   has_many :courses, through: :courses_admissions
 
+  validates :name, presence: true
+  validates :birthplace, presence: true
+  validates :birthdate, presence: true
+   
   include Invoiceable
 
   self.per_page = 10
