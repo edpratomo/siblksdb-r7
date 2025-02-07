@@ -17,6 +17,8 @@ require("tempusdominus-bootstrap-4");
 import "datatables.net-bs4"
 import "datatables.net-responsive-bs4";
 
+import "./sidebar_content"
+
 // console.log($.fn.datetimepicker);
 
 document.addEventListener("turbo:load", () => {
@@ -24,22 +26,6 @@ document.addEventListener("turbo:load", () => {
 
   $('#datetimepicker1').datetimepicker({format: 'L', ignoreReadonly: true });
 
-  //Date picker
-  /*
-  $('#admission_after').datepicker({format: 'L',
-    onSelect: function(dateText, inst) {
-      console.log("datetimepicker AFTER selected");
-      $(this).parents("form").submit();
-    }
-  });
-  
-  $('#admission_before').datetimepicker({format: 'L',
-    onSelect: function(dateText, inst) {
-      console.log("datetimepicker BEFORE selected");
-      $(this).parents("form").submit();
-    }
-  });
-  */
   $("#datatable_with_search").DataTable({
     "responsive": true, "lengthChange": false, "autoWidth": false,
     "searching": true, "paging": true, "ordering": true, "info": true
@@ -60,9 +46,3 @@ document.addEventListener("turbo:load", () => {
 import toastr from "toastr"
 window.toastr = toastr;
 window.BootstrapDialog = require("bootstrap4-dialog/dist/js/bootstrap-dialog.min");
-
-/*
-console.log(window.bootstrap);
-console.log(window.toastr);
-console.log(window.BootstrapDialog);
-*/
