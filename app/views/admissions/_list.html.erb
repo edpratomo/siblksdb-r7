@@ -18,8 +18,13 @@
           <td><%= admission.birthplace %>, <%= admission.birthdate %></td>
           <td><%= admission.courses.map {|e| "#{e.program.program} - #{e.name}" }.join(", ") %></td>
           <td><%= admission.created_at %></td>
-          <td><%= link_to 'Edit', edit_admission_path(admission) %></td>
-          <td><%= link_to 'Destroy', admission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to edit_admission_path(admission) do %>
+            <%= button_tag type: 'button', class: 'btn btn-primary' do %>
+              Edit
+            <% end %>
+            <% end %>
+          </td>
+          <td><%= button_to 'Delete', admission, method: :delete, data: { "turbo-confirm": 'Are you sure?' }, class: 'btn btn-danger' %></td>
         </tr>
       <% end %>
       </tbody>
