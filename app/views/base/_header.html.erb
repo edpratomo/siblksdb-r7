@@ -6,7 +6,7 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Home</a>
+      <a href="/" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="#" class="nav-link">Contact</a>
@@ -18,13 +18,13 @@
 
     <li class="nav-item dropdown user-menu">
     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-      <%= image_tag("user1-128x128.jpg", class: "user-image img-circle elevation-2", alt: "User Image") %>
+      <%= image_tag current_user.gravatar_url(size: 128), class: "user-image img-circle elevation-2", alt: "User Image" %>
       <span class="d-none d-md-inline"><%= current_user.fullname %></span>
     </a>
     <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
       <!-- User image -->
       <li class="user-header bg-primary">
-        <%= image_tag("user1-128x128.jpg", class: "img-circle elevation-2", alt: "User Image") %>
+        <%= image_tag current_user.gravatar_url(size: 128), class: "img-circle elevation-2", alt: "User Image" %>
         <p>
           <%= current_user.fullname %>
           <div style="font-weight: bold;"><%= "Admin" %></div>
