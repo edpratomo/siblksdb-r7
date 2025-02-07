@@ -68,32 +68,32 @@
               <ul class="nav nav-treeview" <%= expand_treeview(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>>
                 <li class="nav-item">
                   <%= link_to admission_fees_path, {class: "nav-link #{active_tab_class(admission_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= admission_fee_missing %>"></i>
                     <p>Biaya Admisi</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to book_uniform_fees_path, {class: "nav-link #{active_tab_class(book_uniform_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <i class="far fa-circle nav-icon <%= book_uniform_fee_missing %>"></i>
                     <p>Biaya Buku &amp; Seragam</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to reg_course_fees_path, {class: "nav-link #{active_tab_class(reg_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= reg_course_fee_missing %>"></i>
                     <p>Kursus Reguler</p>
                   </a>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to int_course_fees_path, {class: "nav-link #{active_tab_class(int_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= int_course_fee_missing %>"></i>
                     <p>Kursus Intensif</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to ext_course_fees_path, {class: "nav-link #{active_tab_class(ext_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= ext_course_fee_missing %>"></i>
                     <p>Kursus Tambahan</p>
                   <% end %>
                 </li>
