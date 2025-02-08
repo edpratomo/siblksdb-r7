@@ -80,7 +80,4 @@ test:
 #
 production:
   <<: *default
-  host: <%= ENV["SIBLKSDB_R7_DATABASE_HOST"] %>
-  database: <%= ENV["SIBLKSDB_R7_DATABASE_NAME"] %>
-  username: <%= ENV["SIBLKSDB_R7_DATABASE_USER"] %>
-  password: <%= ENV["SIBLKSDB_R7_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
