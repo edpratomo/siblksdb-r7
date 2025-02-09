@@ -36,9 +36,9 @@ class Admission < ApplicationRecord
 
   def self.options_for_sorted_by
     [
-      ["Name (a-z)", "name_asc"],
-      ["Registration date (newest first)", "created_at_desc"],
-      ["Registration date (oldest first)", "created_at_asc"],
+      ["Nama (a-z)", "name_asc"],
+      ["Tanggal pendaftaran (baru -> lama)", "created_at_desc"],
+      ["Tanggal pendaftaran (lama -> baru)", "created_at_asc"],
     ]
   end
 
