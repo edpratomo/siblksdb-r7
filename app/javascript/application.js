@@ -44,6 +44,9 @@ document.addEventListener("turbo:load", () => {
   });
   
   $('#demo-basic').poshytip();
+
+  // turbo interferes with the sidebar collapse, so we need to reinitialize it
+  $('[data-widget="treeview"]').Treeview('init'); // Reinitialize AdminLTE treeview
 });
 
 import toastr from "toastr"
