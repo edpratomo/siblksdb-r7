@@ -1,5 +1,7 @@
 .tip-yellow {
-	z-index:1000;
+  /*	z-index:1000; */
+  z-index: 9999 !important; /* Ensure tooltip appears above the sidebar */
+  position: absolute !important; /* Ensure proper positioning */
 	text-align:left;
 	border:1px solid #939393;
 	padding:7px;
