@@ -24,7 +24,7 @@
             <% end %>
           </td>
           <td>
-            <%= button_to("Delete", admin_user_path(user), method: :delete, data: { turbo_confirm: "Are you sure?" }, 
+            <%= button_to("Delete", admin_user_path(user), method: :delete, data: { "turbo-confirm": "Are you sure?" }, 
                 class: "btn btn-danger", type: "button", disabled: user.first_sysadmin?) %>
           </td>
         </tr>

@@ -7,10 +7,10 @@
 @import "tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.css";
 @import "bootstrap4-dialog/dist/css/bootstrap-dialog.css";
 @import "datatables.net-bs4/css/dataTables.bootstrap4.css";
-/*
-@import "tip-yellow.css";
-@import "popper.css";
-*/
+
+@import "tip-yellow";
+
+@import "popper";
 @import "search-input";
 @import "stimulus-datepicker/css/datepicker.css";
 
@@ -37,4 +37,48 @@
     font-family: 'Source Sans Pro';
     src: url('SourceSans3-Regular.ttf');
     font-weight: normal;
+}
+
+/* taken from the old scaffolds.scss, for validation error messages */
+#notice {
+    color: green;
+}
+  
+.field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}
+  
+#error_explanation {
+    width: 450px;
+    border: 2px solid red;
+    padding: 7px 7px 0;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+  
+    h2 {
+      text-align: left;
+      font-weight: bold;
+      padding: 5px 5px 5px 15px;
+      font-size: 12px;
+      margin: -7px -7px 0;
+      background-color: #c00;
+      color: #fff;
+    }
+  
+    ul li {
+      font-size: 12px;
+      list-style: square;
+    }
+}
+
+/* for bootstrap alerts */
+.alert-overlay {
+    position: fixed; /* Stays in place even when scrolling */
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: auto;
 }

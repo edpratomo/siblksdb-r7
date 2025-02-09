@@ -2,12 +2,12 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <%= image_tag("smaller-logo2.png", alt: "AdminLTE Logo", class: "brand-image elevation-3", style: "opacity: .8") %>
+        <%= image_tag("smaller-logo2.png", alt: "BLK Don Bosco Logo", class: "brand-image elevation-3", style: "opacity: .8") %>
         <span class="brand-text font-weight-light">BLK Don Bosco</span>
       </a>
   
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar" data-controller="popper">
         <%= render 'base/sidebar_user_panel' %>
         <%#= render 'base/sidebar_search' %>
   
@@ -17,7 +17,7 @@
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item">
-              <%= link_to root_path, class: "nav-link" do %>
+              <%= link_to root_path, class: "nav-link #{active_tab_class(root_path)}" do %>
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Home
@@ -25,7 +25,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admissions_path, class: "nav-link" do %>
+              <%= link_to admissions_path, class: "nav-link #{active_tab_class(admissions_path)}", id: "demo-basic", title: "Hey, there! This is a tooltip." do %>
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Admisi
@@ -33,7 +33,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to invoices_path, class: "nav-link" do %>
+              <%= link_to invoices_path, class: "nav-link #{active_tab_class(invoices_path)}" do %>
                 <i class="nav-icon fas fa-file-invoice"></i>
                 <p>
                   Tagihan &amp; Pembayaran
@@ -41,7 +41,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to refunds_path, class: "nav-link" do %>
+              <%= link_to refunds_path, class: "nav-link #{active_tab_class(refunds_path)}" do %>
                 <i class="nav-icon fa fa-undo"></i>
                 <p>
                   Pengembalian Dana
@@ -58,49 +58,53 @@
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" data-popper-target="element" data-action="mouseenter->popper#show mouseleave->popper#hide" class="nav-link <%= active_tab_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>">
                 <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                   Pengaturan Biaya
                   <i class="right fas <%= active_arrow_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>"></i>
                 </p>
+                <div id="tooltip" role="tooltip" data-popper-target="tooltip">
+                My tooltip
+                <div id="arrow" data-popper-arrow></div>
+            </div>
               </a>
               <ul class="nav nav-treeview" <%= expand_treeview(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>>
                 <li class="nav-item">
                   <%= link_to admission_fees_path, {class: "nav-link #{active_tab_class(admission_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= admission_fee_missing %>"></i>
                     <p>Biaya Admisi</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to book_uniform_fees_path, {class: "nav-link #{active_tab_class(book_uniform_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon text-danger"></i>
+                    <i class="far fa-circle nav-icon <%= book_uniform_fee_missing %>"></i>
                     <p>Biaya Buku &amp; Seragam</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to reg_course_fees_path, {class: "nav-link #{active_tab_class(reg_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= reg_course_fee_missing %>"></i>
                     <p>Kursus Reguler</p>
                   </a>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to int_course_fees_path, {class: "nav-link #{active_tab_class(int_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= int_course_fee_missing %>"></i>
                     <p>Kursus Intensif</p>
                   <% end %>
                 </li>
                 <li class="nav-item">
                   <%= link_to ext_course_fees_path, {class: "nav-link #{active_tab_class(ext_course_fees_path)}"} do %>
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon <%= ext_course_fee_missing %>"></i>
                     <p>Kursus Tambahan</p>
                   <% end %>
                 </li>
                 </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="#" class="nav-link <%= active_tab_class(admin_users_path, new_admin_user_path) %>">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Kelola Pengguna

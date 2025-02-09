@@ -14,7 +14,7 @@
       <%= number_to_currency refund.amount %>
       </div>
       <div class="col-6">
-      <%= button_to "Bayar", refund_path(refund), {class: "btn btn-sm btn-warning", method: "patch", params: {"refund[paid_at]": Time.now}} %>
+      <%= button_to "Bayar", refund_path(refund), {class: "btn btn-sm btn-warning", method: "patch", data: {"turbo-confirm": "Are you sure?"}, params: {"refund[paid_at]": Time.now}} %>
       </div>
     </div>
   <% end %>

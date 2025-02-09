@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
 
-    <table id="example2" class="table table-bordered table-hover">
+    <table id="datatable_plain" class="table table-bordered table-hover">
       <thead>
       <tr>
         <th>Harga</th>
@@ -12,7 +12,7 @@
       <tbody>
       <% fees.each do |fee| %>
         <tr>
-          <td><%= fee.amount %></td>
+          <td><%= number_to_currency(fee.amount) %></td>
           <td><%= fee.active_since %></td>
           <td></td>
         </tr>

@@ -21,7 +21,7 @@
           <% if admission.new_record? %>
             <%= render 'autocomplete', form: form %>
           <% else %>
-            <%= form.text_field :name, class: "form-control" %>
+            <%= form.text_field :name, class: "form-control", required: true %>
           <% end %>
         </div>
       </div>
@@ -43,9 +43,9 @@
       <div class="form-group row">
         <%= form.label :birthplace, "Tempat, Tanggal Lahir", class: "control-label col-sm-3" %>
         <div class="col-sm-7 form-inline">
-          <%= form.text_field :birthplace, class: "form-control" %>
+          <%= form.text_field :birthplace, class: "form-control", required: true %>
           <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-            <%= form.text_field :birthdate, class: "form-control datetimepicker-input", "data-target": "#datetimepicker1", "data-date-format": "DD/MM/YYYY", placeholder: "dd/mm/yyyy", value: @admission.birthdate ? @admission.birthdate.strftime("%d/%m/%Y") : nil %>
+            <%= form.text_field :birthdate, required: true, class: "form-control datetimepicker-input", "data-target": "#datetimepicker1", "data-date-format": "DD/MM/YYYY", placeholder: "dd/mm/yyyy", value: @admission.birthdate ? @admission.birthdate.strftime("%d/%m/%Y") : nil %>
             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
             </div>
