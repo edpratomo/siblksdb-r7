@@ -39,6 +39,7 @@
     font-weight: normal;
 }
 
+/* taken from the old scaffolds.scss, for validation error messages */
 #notice {
     color: green;
 }
@@ -70,4 +71,14 @@
       font-size: 12px;
       list-style: square;
     }
+}
+
+/* for bootstrap alerts */
+.alert-overlay {
+    position: fixed; /* Stays in place even when scrolling */
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1050;
+    width: auto;
 }
