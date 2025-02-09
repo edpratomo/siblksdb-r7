@@ -19,6 +19,8 @@ import "datatables.net-responsive-bs4";
 
 import "./sidebar_content"
 
+require("./jquery.poshytip");
+
 // console.log($.fn.datetimepicker);
 
 document.addEventListener("turbo:load", () => {
@@ -41,6 +43,7 @@ document.addEventListener("turbo:load", () => {
     "responsive": true,
   });
   
+  $('#demo-basic').poshytip();
 });
 
 import toastr from "toastr"

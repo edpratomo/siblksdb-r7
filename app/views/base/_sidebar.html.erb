@@ -7,7 +7,7 @@
       </a>
   
       <!-- Sidebar -->
-      <div class="sidebar">
+      <div class="sidebar" data-controller="popper">
         <%= render 'base/sidebar_user_panel' %>
         <%#= render 'base/sidebar_search' %>
   
@@ -25,7 +25,7 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to admissions_path, class: "nav-link #{active_tab_class(admissions_path)}" do %>
+              <%= link_to admissions_path, class: "nav-link #{active_tab_class(admissions_path)}", id: "demo-basic", title: "Hey, there! This is a tooltip." do %>
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                   Admisi
@@ -58,12 +58,16 @@
             </li>
             
             <li class="nav-item">
-              <a href="#" class="nav-link <%= active_tab_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>">
+              <a href="#" data-popper-target="element" data-action="mouseenter->popper#show mouseleave->popper#hide" class="nav-link <%= active_tab_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>">
                 <i class="nav-icon fas fa-dollar-sign"></i>
                 <p>
                   Pengaturan Biaya
                   <i class="right fas <%= active_arrow_class(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>"></i>
                 </p>
+                <div id="tooltip" role="tooltip" data-popper-target="tooltip">
+                My tooltip
+                <div id="arrow" data-popper-arrow></div>
+            </div>
               </a>
               <ul class="nav nav-treeview" <%= expand_treeview(admission_fees_path, book_uniform_fees_path, reg_course_fees_path, int_course_fees_path, ext_course_fees_path) %>>
                 <li class="nav-item">
