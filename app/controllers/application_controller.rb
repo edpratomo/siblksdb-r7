@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   
   #before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+  after_action :store_location
 
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
@@ -31,6 +32,18 @@ class ApplicationController < ActionController::Base
 
   def redirect_back_or_default(default)
     redirect_to(session[:return_to] || default)
+  end
+
+  def page_key
+    (controller_name + "_page").to_sym
+  end
+
+  def set_current_page
+    if params[:page] then
+      session[page_key] = params[:page]
+    elsif session[page_key]
+      params[:page] = session[page_key]
+    end
   end
 
 end
