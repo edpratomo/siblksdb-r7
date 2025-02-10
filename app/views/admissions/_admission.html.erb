@@ -1,0 +1,35 @@
+          <div id="<%= dom_id admission %>" class="col-md-6">
+            <div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-text-width"></i>
+                  <%= admission.name %>
+                </h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <dl class="row">
+                  <dt class="col-sm-4">Nama Lengkap</dt>
+                  <dd class="col-sm-8"><%= admission.name %> (<%= t(admission.sex) %>)</dd>
+                  <dt class="col-sm-4">Email</dt>
+                  <dd class="col-sm-8"><%= admission.email %></dd>
+                  <dt class="col-sm-4">Kursus yang diambil</dt>
+                  <dd class="col-sm-8">
+                    <ul class="list-group list-group-unbordered mb-3">
+                      <% admission.courses_admissions.each do |ca| %>
+                        <li class="list-group-item">
+                          <%= ca.course.program.program %> - <%= ca.course.name %> <a class="float-right"><%= ca.created_at.strftime('%d %b %Y')  %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </dd>
+                  <dt class="col-sm-4">Tanggal dibuat</dt>
+                  <dd class="col-sm-8"><%= admission.created_at %></dd>
+                  <dt class="col-sm-4">Terakhir diperbarui</dt>
+                  <dd class="col-sm-8"><%= admission.modified_at %></dd>
+                </dl>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
