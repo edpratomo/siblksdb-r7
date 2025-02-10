@@ -1,3 +1,6 @@
+<% if @redirected %>
+  <%= render 'rdr_alert', admission: @admission %>
+<% end %>
 <%= render 'form', admission: @admission, courses_options: @courses_options %>
 
 <%= link_to 'Show', @admission %> |

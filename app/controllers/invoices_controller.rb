@@ -1,7 +1,8 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[ show edit update destroy ]
   before_action :set_payment, only: %i[ index ]
-
+  before_action :set_current_page, only: [:index] 
+  
   skip_after_action :verify_same_origin_request
   
   # GET /invoices or /invoices.json
