@@ -17,8 +17,6 @@ require("tempusdominus-bootstrap-4");
 import "datatables.net-bs4"
 import "datatables.net-responsive-bs4";
 
-import "./sidebar_content"
-
 require("./jquery.poshytip");
 
 // console.log($.fn.datetimepicker);
