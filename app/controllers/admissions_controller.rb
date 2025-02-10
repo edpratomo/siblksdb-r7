@@ -18,7 +18,6 @@ class AdmissionsController < ApplicationController
     ff_result = Admission.filterrific_find(@filterrific)
     Rails.logger.debug("ff_result: #{ff_result.inspect}")
     @admissions = ff_result.paginate(page: params[:page])
-    #@admissions = @filterrific.find.page(params[:page]).e
 
     respond_to do |format|
       format.html
@@ -42,6 +41,7 @@ class AdmissionsController < ApplicationController
 
   # GET /admissions/1/edit
   def edit
+    @redirected = params[:redirected]
   end
 
   # POST /admissions or /admissions.json
