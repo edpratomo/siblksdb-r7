@@ -17,8 +17,6 @@ require("tempusdominus-bootstrap-4");
 import "datatables.net-bs4"
 import "datatables.net-responsive-bs4";
 
-import "./sidebar_content"
-
 require("./jquery.poshytip");
 
 // console.log($.fn.datetimepicker);
@@ -46,9 +44,10 @@ document.addEventListener("turbo:load", () => {
   $('#demo-basic').poshytip();
 
   // turbo interferes with the sidebar collapse, so we need to reinitialize it
-  $('[data-widget="treeview"]').Treeview('init'); // Reinitialize AdminLTE treeview
+  // $('[data-widget="treeview"]').Treeview('init'); // Reinitialize AdminLTE treeview
 });
 
 import toastr from "toastr"
 window.toastr = toastr;
+console.log("toastr loaded: " + window.toastr);
 window.BootstrapDialog = require("bootstrap4-dialog/dist/js/bootstrap-dialog.min");
