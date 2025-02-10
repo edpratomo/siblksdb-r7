@@ -1,0 +1,15 @@
+<% if flash.any? %>
+<div class="alert-overlay">
+  <% flash.each do |key, message| -%>
+    <% map_keys = { notice: "success", alert: "danger", error: "danger", warning: "warning" } %>
+    <% context = map_keys[key.to_sym] || "info" %>
+    <% if message.is_a? Array %>
+      <% message.each do |msg| %>
+        <%= render 'base/bootstrap_alert', context: context, message: msg %>
+      <% end %>
+    <% else %>
+      <%= render 'base/bootstrap_alert', context: context, message: message %>
+    <% end %>
+  <% end %>
+</div>
+<% end %>
