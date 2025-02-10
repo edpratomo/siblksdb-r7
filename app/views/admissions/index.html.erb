@@ -1,13 +1,11 @@
 
 <%= render 'filter' %>
+<div class="py-2">
+<%= render 'new_admission_button' %>
+</div>
+
 <%= render 'list', admissions: @admissions %>
 
 <div>
-
-<%= link_to new_admission_path do %>
-  <%= button_tag(class: "btn btn-primary", type: "button") do %>
-    <i class="fa fa-solid fa-circle-plus"></i> Pendaftaran Baru
-  <% end %>
-<% end %>
-
+<%= render 'new_admission_button' %>
 </div>
