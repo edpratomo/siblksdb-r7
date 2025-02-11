@@ -41,7 +41,7 @@ document.addEventListener("turbo:load", () => {
     "responsive": true,
   });
   
-  $('#demo-basic').poshytip();
+  $('.tooltip-poshy').poshytip();
 
   // turbo interferes with the sidebar collapse, so we need to reinitialize it
   // $('[data-widget="treeview"]').Treeview('init'); // Reinitialize AdminLTE treeview
