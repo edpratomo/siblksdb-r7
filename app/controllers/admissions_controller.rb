@@ -1,7 +1,8 @@
 class AdmissionsController < ApplicationController
   before_action :set_admission, only: %i[ show edit update destroy ]
   before_action :set_courses_options, only: %i[ new edit create update ]
-
+  before_action :set_current_page, only: [:index] 
+  
   #protect_from_forgery except: :index
   skip_after_action :verify_same_origin_request
 
@@ -18,7 +19,6 @@ class AdmissionsController < ApplicationController
     ff_result = Admission.filterrific_find(@filterrific)
     Rails.logger.debug("ff_result: #{ff_result.inspect}")
     @admissions = ff_result.paginate(page: params[:page])
-    #@admissions = @filterrific.find.page(params[:page]).e
 
     respond_to do |format|
       format.html
@@ -42,6 +42,7 @@ class AdmissionsController < ApplicationController
 
   # GET /admissions/1/edit
   def edit
+    @redirected = params[:redirected]
   end
 
   # POST /admissions or /admissions.json

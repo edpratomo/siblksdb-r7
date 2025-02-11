@@ -2,8 +2,9 @@ class Invoice < ApplicationRecord
   # invoice can be polymorphically applied to either admission or student
   belongs_to :invoiceable, polymorphic: true
 
-  #belongs_to :admission, -> { where(invoices: { invoiceable_type: 'Admission' }) }, foreign_key: 'invoiceable_id'
-  #belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
+  # the following lines do NOT work:
+  # belongs_to :admission, -> { where(invoices: { invoiceable_type: 'Admission' }) }, foreign_key: 'invoiceable_id'
+  # belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
 
   has_many :payments
   has_many :invoice_items  

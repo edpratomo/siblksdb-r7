@@ -17,6 +17,6 @@ export default class extends Controller {
     const selectedValue = event.detail.value;
     console.log("🎯 Selected:", selectedValue);
 
-    window.location.href = '/admissions/' + selectedValue + '/edit';
+    window.location.href = '/admissions/' + selectedValue + '/edit?redirected=1';
   }
 }

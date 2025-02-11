@@ -14,7 +14,7 @@
       <tbody>
       <% admissions.each do |admission| %>
         <tr>
-          <td><%= admission.name %></td>
+          <td><%= link_to admission.name, admission_path(admission) %></td>
           <td><%= admission.birthplace %>, <%= admission.birthdate %></td>
           <td><%= admission.courses.map {|e| "#{e.program.program} - #{e.name}" }.join(", ") %></td>
           <td><%= admission.created_at %></td>
@@ -24,7 +24,7 @@
             <% end %>
             <% end %>
           </td>
-          <td><%= button_to 'Delete', admission, method: :delete, data: { "turbo-confirm": 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          <td><%= button_to 'Delete', admission, method: :delete, data: { "turbo-confirm": 'Are you sure?' }, class: 'btn btn-danger', disabled: false %></td>
         </tr>
       <% end %>
       </tbody>
