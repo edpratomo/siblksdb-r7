@@ -11,7 +11,7 @@
       </h3>
     </div>
     <div class="card-body">
-      <% if admin_user.errors.any? %>)
+      <% if admin_user.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(admin_user.errors.count, "error") %> prohibited this admin_user from being saved:</h2>
 
@@ -75,8 +75,10 @@
         <div class="col-sm-4">
         <% if admin_user.new_record? %>
           <%= form.password_field :password, class: "form-control tooltip-poshy", id: "demo-basic", title: "Minimal 4 karakter." %>
-        <% else %>
+        <% elsif admin_user.id == current_user.id %>
           <%= form.password_field :password, class: "form-control tooltip-poshy", id: "demo-basic", title: "Anda akan otomatis log out setelah password berhasil diganti." %>
+        <% else %>
+          <%= form.password_field :password, class: "form-control tooltip-poshy", id: "demo-basic", title: "Kosongkan jika tidak ingin mengganti password." %>
         <% end %>
         </div>
       </div>
