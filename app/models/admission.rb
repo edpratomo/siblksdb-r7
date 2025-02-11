@@ -5,7 +5,11 @@ class Admission < ApplicationRecord
   validates :name, presence: true
   validates :birthplace, presence: true
   validates :birthdate, presence: true
-   
+  
+  before_destroy do
+    throw(:abort) if invoices.already_paid(1).count > 0
+  end
+
   include Invoiceable
 
   self.per_page = 10
