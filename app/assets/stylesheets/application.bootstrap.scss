@@ -1,18 +1,18 @@
-@import "admin-lte/dist/css/adminlte.css";
+@import "admin-lte/dist/css/adminlte";
 @import 'bootstrap-icons/font/bootstrap-icons';
-@import "admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.css";
-@import "admin-lte/plugins/toastr/toastr.css";
+@import "admin-lte/plugins/icheck-bootstrap/icheck-bootstrap";
+@import "admin-lte/plugins/toastr/toastr";
 @import '@fortawesome/fontawesome-free/css/fontawesome.css';
-@import 'daterangepicker/daterangepicker.css';
-@import "tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.css";
-@import "bootstrap4-dialog/dist/css/bootstrap-dialog.css";
-@import "datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import 'daterangepicker/daterangepicker';
+@import "tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4";
+@import "bootstrap4-dialog/dist/css/bootstrap-dialog";
+@import "datatables.net-bs4/css/dataTables.bootstrap4";
+@import "stimulus-datepicker/css/datepicker";
 
+// local styles
 @import "tip-yellow";
-
 @import "popper";
 @import "search-input";
-@import "stimulus-datepicker/css/datepicker.css";
 
 @font-face {
     font-family: 'Source Sans Pro';
