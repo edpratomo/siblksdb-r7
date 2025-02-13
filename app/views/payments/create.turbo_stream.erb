@@ -1,6 +1,11 @@
 <%= turbo_stream.replace(dom_id(@invoice)) do %>
   <%= render 'invoices/status', invoice: @invoice %>
 <% end %>
-<%= turbo_stream.replace("refunds-count") do %>
-  <%= refunds_count_badge %>
+<% if @refunds_count %>
+  <%= turbo_stream.replace("refunds-count") do %>
+    <%= refunds_count_badge %>
+  <% end %>
+<% end %>
+<%= turbo_stream.replace("flash_messages") do %>
+  <span id="flash_messages"><%= render 'flash_toastr' %></span>
 <% end %>
