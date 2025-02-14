@@ -3,7 +3,7 @@ class Refund < ApplicationRecord
 
   # filter list
   filterrific(
-    default_filter_params: { sorted_by: 'created_at_asc', already_paid: false },
+    default_filter_params: { sorted_by: 'created_at_desc', already_paid: false },
     available_filters: [
       :sorted_by,
       :already_paid,
