@@ -4,7 +4,7 @@
     <% context = map_keys[key.to_sym] || "info" %>
     <% if message.is_a? Array %>
       <% message.each do |msg| %>
-        <span data-controller="flash" data-flash-type="<%= context %>" data-flash-message="<%= message %>"></span>
+        <span data-controller="flash" data-flash-type="<%= context %>" data-flash-message="<%= msg %>"></span>
       <% end %>
     <% else %>
       <span data-controller="flash" data-flash-type="<%= context %>" data-flash-message="<%= message %>"></span>
