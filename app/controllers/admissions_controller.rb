@@ -79,6 +79,7 @@ class AdmissionsController < ApplicationController
       flash[:notice] = "Admission successfully deleted."
       redirect_to admissions_path
     else
+      Rails.logger.debug("Error deleting admission: #{@admission.errors.inspect}")
       flash[:alert] = @admission.errors.full_messages.join(", ")
       redirect_back_or_default admissions_path # Redirect back to the show page or another appropriate page
     end

@@ -7,11 +7,12 @@ class Invoice < ApplicationRecord
   # belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
 
   has_many :payments
-  has_many :invoice_items  
+  has_many :invoice_items #, dependent: :destroy
   has_one :refund
 
   validates :invoice_number, uniqueness: true
   before_create :set_invoice_number
+  before_destroy :destroy_items, if: -> { payments.count == 0 }
 
   # filter list
   filterrific(
@@ -29,6 +30,10 @@ class Invoice < ApplicationRecord
     if Regexp.new('^(.+)_(asc|desc)$', Regexp::IGNORECASE).match(column_order)
       reorder("#{$1} #{$2}")
     end
+  }
+
+  scope :has_payments, -> {
+    joins(:payments).distinct
   }
 
   scope :already_paid, ->(true_or_false) {
@@ -106,5 +111,9 @@ class Invoice < ApplicationRecord
                             self.invoiceable.id.to_s + "/" + SecureRandom.hex(3).upcase
       break unless Invoice.exists?(invoice_number: invoice_number)
     end
+  end
+
+  def destroy_items
+    invoice_items.destroy_all
   end
 end
