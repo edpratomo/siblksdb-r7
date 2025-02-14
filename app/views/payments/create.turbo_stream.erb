@@ -7,5 +7,5 @@
   <% end %>
 <% end %>
 <%= turbo_stream.replace("flash_messages") do %>
-  <span id="flash_messages"><%= render 'flash_toastr' %></span>
+  <div id="flash_messages"><%= render "flash_toastr" %></div>
 <% end %>
