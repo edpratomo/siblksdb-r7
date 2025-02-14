@@ -55,11 +55,11 @@ class RefundsController < ApplicationController
   def update
     respond_to do |format|
       if @refund.update(refund_params)
-        flash[:notice] = "Refund paid."
+        flash.now[:notice] = "Refund paid."
         @refunds_count = Refund.already_paid('0').size
         format.turbo_stream
 
-        format.html { render partial: 'status', locals: {refund: @refund} }
+        #format.html { render partial: 'status', locals: {refund: @refund} }
         #format.html { redirect_to @refund, notice: "Refund was successfully updated." }
         format.json { render :show, status: :ok, location: @refund }
       else
