@@ -1,6 +1,9 @@
 <div class="card" id="filterrific_results">
-  <div class="card-body">
+    <div class="card-header">
+      <%= page_entries_info admissions, :model => 'admission' %>
+    </div>
 
+  <div class="card-body">
     <table id="admissions_table" class="table table-bordered table-hover">
       <thead>
       <tr>
@@ -24,14 +27,16 @@
             <% end %>
             <% end %>
           </td>
-          <td><%= button_to 'Delete', admission, method: :delete, data: { "turbo-confirm": 'Are you sure?' }, class: 'btn btn-danger', disabled: false %></td>
+          <td><%= button_to 'Delete', admission, method: :delete, data: { "turbo-confirm": 'Are you sure?' }, 
+                  class: 'btn btn-danger', disabled: false %>
+          </td>
         </tr>
       <% end %>
       </tbody>
     </table>
 
   </div>
-<!-- ./card-body -->
+  <!-- ./card-body -->
   <div class="card-footer">
     <%= will_paginate admissions %>
   </div>
