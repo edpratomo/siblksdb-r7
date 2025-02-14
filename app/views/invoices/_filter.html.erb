@@ -13,6 +13,8 @@
                        { class: 'form-control', data: {"filter-target": "filterParams", action: "change->filter#submit" } }
           %>
         </div>
+      </div>
+      <div class="col-md-4">
         <div class="form-group">
           <label>Status Pembayaran</label>
           <%= f.select :already_paid, @filterrific.select_options[:already_paid],
