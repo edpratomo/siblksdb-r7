@@ -7,7 +7,10 @@ class Admission < ApplicationRecord
   validates :birthdate, presence: true
   
   before_destroy do
-    throw(:abort) if invoices.already_paid(1).count > 0
+    if invoices.already_paid(1).count > 0
+      errors.add(:base, "Tidak dapat dihapus karena sudah ada tagihan yang dibayar.")
+      throw(:abort)
+    end 
   end
 
   include Invoiceable

@@ -75,14 +75,15 @@ class AdmissionsController < ApplicationController
 
   # DELETE /admissions/1 or /admissions/1.json
   def destroy
-    @admission.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admissions_url, notice: "Admission was successfully destroyed." }
-      format.json { head :no_content }
+    if @admission.destroy
+      flash[:notice] = "Admission successfully deleted."
+      redirect_to admissions_path
+    else
+      flash[:alert] = @admission.errors.full_messages.join(", ")
+      redirect_back_or_default admissions_path # Redirect back to the show page or another appropriate page
     end
   end
-
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admission

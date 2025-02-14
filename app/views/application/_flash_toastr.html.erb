@@ -1,6 +1,6 @@
 <% if flash.any? %>
   <% flash.each do |key, message| -%>
-    <% map_keys = { notice: "success", alert: "danger", error: "danger", warning: "warning" } %>
+    <% map_keys = { notice: "success", alert: "error", error: "error", warning: "warning" } %>
     <% context = map_keys[key.to_sym] || "info" %>
     <% if message.is_a? Array %>
       <% message.each do |msg| %>
