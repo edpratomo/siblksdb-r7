@@ -211,3 +211,23 @@ id:
       long: "%d %B %Y %H.%M"
       short: "%d %b %H.%M"
     pm: pm
+  will_paginate:
+    previous_label: "&#8592; Previous"
+    previous_aria_label: "Previous page"
+    next_label: "Next &#8594;"
+    next_aria_label: "Next page"
+    page_gap: "&hellip;"
+    container_aria_label: "Pagination"
+    page_aria_label: "Page %{page}"
+    page_entries_info:
+      single_page:
+        zero:  "No %{model} found"
+        one:   "Menampilkan 1 %{model}"
+        other: "Menampilkan keseluruhan %{count} %{model}"
+      single_page_html:
+        zero:  "No %{model} found"
+        one:   "Menampilkan <b>1</b> %{model}"
+        other: "Menampilkan <b>keseluruhan&nbsp;%{count}</b> %{model}"
+
+      multi_page: "Menampilkan %{model} %{from} - %{to} dari total %{count}"
+      multi_page_html: "Menampilkan %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> dari total <b>%{count}</b>"

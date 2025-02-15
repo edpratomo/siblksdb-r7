@@ -7,11 +7,21 @@ class Invoice < ApplicationRecord
   # belongs_to :student, -> { where(invoices: { invoiceable_type: 'Student' }) }, foreign_key: 'invoiceable_id'
 
   has_many :payments
-  has_many :invoice_items  
+  has_many :invoice_items, dependent: :destroy
   has_one :refund
 
   validates :invoice_number, uniqueness: true
   before_create :set_invoice_number
+  before_destroy do
+    if payments.count > 0
+      # THIS ERROR MESSAGE IS NOT PROPAGATED:
+      # errors.add(:base, "Tidak dapat dihapus karena sudah ada pembayaran.")
+
+      # IMPORTANT WORKAROUND:
+      invoiceable.errors.add(:base, "Tidak dapat dihapus karena sudah ada pembayaran.")
+      throw(:abort)
+    end
+  end
 
   # filter list
   filterrific(
@@ -29,6 +39,10 @@ class Invoice < ApplicationRecord
     if Regexp.new('^(.+)_(asc|desc)$', Regexp::IGNORECASE).match(column_order)
       reorder("#{$1} #{$2}")
     end
+  }
+
+  scope :has_payments, -> {
+    joins(:payments).distinct
   }
 
   scope :already_paid, ->(true_or_false) {
@@ -107,4 +121,5 @@ class Invoice < ApplicationRecord
       break unless Invoice.exists?(invoice_number: invoice_number)
     end
   end
+
 end

@@ -16,11 +16,17 @@ application.register("digit-grouping", DigitGroupingController)
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
+import FlashController from "./flash_controller"
+application.register("flash", FlashController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
 import InvoiceDetailController from "./invoice_detail_controller"
 application.register("invoice-detail", InvoiceDetailController)
 
-import PopperController from "./popper_controller"
-application.register("popper", PopperController)
+//import PopperController from "./popper_controller"
+//application.register("popper", PopperController)
+
+// import SidebarController from "./sidebar_controller"
+// application.register("sidebar", SidebarController)

@@ -33,15 +33,13 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        flash[:notice] = ["Payment was successfully created."]
+        flash.now[:notice] = ["Payment was successfully created."]
         if @invoice.refund
-          flash[:notice] << "Refund created."
+          flash.now[:notice] << "Refund created."
           @refunds_count = Refund.already_paid('0').size
-          format.turbo_stream
-        else
-          format.html { render partial: 'invoices/status', locals: {invoice: @invoice} }
-          format.json { render :show, status: :created, location: @payment }
         end
+        format.turbo_stream 
+        format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @payment.errors, status: :unprocessable_entity }

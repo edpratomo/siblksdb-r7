@@ -36,6 +36,7 @@ class Admin::UsersController < ApplicationController
 
   # PATCH/PUT /admin/users/1 or /admin/users/1.json
   def update
+    Rails.logger.debug "admin_user_params: #{admin_user_params.inspect}"
     respond_to do |format|
       if @admin_user.update(admin_user_params)
         format.html { redirect_to admin_user_path(@admin_user), notice: "User was successfully updated." }
@@ -65,6 +66,11 @@ class Admin::UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def admin_user_params
-      params.fetch(:user, {}).permit(:username, :fullname, :email, :password, :password_confirmation, :group_id)
+      params.fetch(:user, {}).permit(:username, :fullname, :email, :password, :password_confirmation, :group_id).tap do |updated|
+        if updated[:password].blank?
+          updated.delete(:password)
+          updated.delete(:password_confirmation)
+        end
+      end
     end
 end
